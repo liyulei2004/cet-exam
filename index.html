@@ -154,7 +154,8 @@ body{font-family:'Times New Roman','Microsoft YaHei','PingFang SC',serif;backgro
       <a class="section-link" data-section="listening">听力理解 <span class="badge">25min</span></a>
       <a class="section-link" data-section="reading1">选词填空 <span class="badge">阅读</span></a>
       <a class="section-link" data-section="reading2">长篇阅读 <span class="badge">匹配</span></a>
-      <a class="section-link" data-section="reading3">仔细阅读 <span class="badge">Passage</span></a>
+      <a class="section-link" data-section="reading3">仔细阅读 Passage 1 <span class="badge">阅读</span></a>
+      <a class="section-link" data-section="reading3b">仔细阅读 Passage 2 <span class="badge">阅读</span></a>
       <a class="section-link" data-section="translation">翻译 <span class="badge">30min</span></a>
     </div>
   </aside>
@@ -2021,6 +2022,27 @@ function renderSection(sectionKey) {
 
   // 仔细阅读
   else if (sectionKey === 'reading3') {
+    html += `<div class="card">
+      <h2>${section.title}</h2>
+      <p class="passage-title">${section.passageTitle}</p>
+      <div class="passage">${section.passage.split('\n\n').map(p => `<p>${renderPassageWithClickableWords(p)}</p>`).join('')}</div>
+      <div class="questions"><h3 style="margin-bottom:12px">Questions:</h3>`;
+    section.questions.forEach((q, qi) => {
+      html += `<div class="question">
+        <p class="q-text"><span class="q-num">${qi+1}.</span>${q.q}</p>
+        <div class="options">${q.opts.map((o, oi) => {
+          let cls = 'option';
+          if (state.showAnswers && oi === q.ans) cls += ' correct';
+          return `<div class="${cls}">${o}</div>`;
+        }).join('')}</div>
+      </div>`;
+    });
+  }
+
+  // 仔细阅读 Passage Two
+  else if (sectionKey === 'reading3b') {
+    const section = data.reading3b;
+    if (!section) return '<div class="card"><p>暂无该部分数据</p></div>';
     html += `<div class="card">
       <h2>${section.title}</h2>
       <p class="passage-title">${section.passageTitle}</p>
