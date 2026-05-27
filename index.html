@@ -149,7 +149,8 @@ body{font-family:'Times New Roman','Microsoft YaHei','PingFang SC',serif;backgro
   <aside class="sidebar">
     <div class="sidebar-inner" id="sidebarNav">
       <h3>试卷导航</h3>
-      <a class="section-link active" data-section="writing">写作 <span class="badge">30min</span></a>
+      <a class="section-link active" data-section="home">首页</a>
+      <a class="section-link" data-section="writing">写作 <span class="badge">30min</span></a>
       <a class="section-link" data-section="listening">听力理解 <span class="badge">25min</span></a>
       <a class="section-link" data-section="reading1">选词填空 <span class="badge">阅读</span></a>
       <a class="section-link" data-section="reading2">长篇阅读 <span class="badge">匹配</span></a>
@@ -1109,9 +1110,9 @@ EXAM_DATA.cet6['2025-12'] = {
 
 // ======================== 状态管理 ========================
 let state = {
-  examType: 'cet4',
-  year: '2024-12',
-  section: 'reading3',
+  examType: 'cet6',
+  year: '2025-12',
+  section: 'home',
   showAnswers: false
 };
 
@@ -1991,8 +1992,39 @@ function renderSection(sectionKey) {
 
   let html = '';
 
+  // 首页
+  if (sectionKey === 'home') {
+    html += `<div class="card" style="text-align:center;padding:60px 40px">
+      <h1 style="font-size:36px;color:#1a73e8;margin-bottom:10px">四六级真题在线</h1>
+      <p style="font-size:16px;color:#888;margin-bottom:30px">大学英语六级 · 历年真题 · 逐题解析 · 点击查词</p>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:30px">
+        <div style="background:#f8faff;border:1px solid #e0e8f5;border-radius:12px;padding:24px;width:200px">
+          <div style="font-size:40px;margin-bottom:8px">7</div>
+          <div style="font-size:14px;color:#666">套真题</div>
+        </div>
+        <div style="background:#f8faff;border:1px solid #e0e8f5;border-radius:12px;padding:24px;width:200px">
+          <div style="font-size:40px;margin-bottom:8px">14</div>
+          <div style="font-size:14px;color:#666">篇仔细阅读</div>
+        </div>
+        <div style="background:#f8faff;border:1px solid #e0e8f5;border-radius:12px;padding:24px;width:200px">
+          <div style="font-size:40px;margin-bottom:8px">70</div>
+          <div style="font-size:14px;color:#666">道真题</div>
+        </div>
+        <div style="background:#f8faff;border:1px solid #e0e8f5;border-radius:12px;padding:24px;width:200px">
+          <div style="font-size:40px;margin-bottom:8px">750+</div>
+          <div style="font-size:14px;color:#666">内置词汇</div>
+        </div>
+      </div>
+      <p style="color:#aaa;margin-bottom:20px">2025年12月 — 2022年12月</p>
+      <button onclick="document.querySelector('[data-section=reading3]').click()" style="padding:14px 40px;background:#1a73e8;color:#fff;border:none;border-radius:8px;font-size:16px;cursor:pointer">开始刷题</button>
+      <div style="margin-top:24px;font-size:14px;color:#999">
+        <p>点击单词 → 翻译 · 双击句子 → 整句翻译 · 点击答案 → 对答案</p>
+      </div>
+    </div>`;
+  }
+
   // 写作
-  if (sectionKey === 'writing') {
+  else if (sectionKey === 'writing') {
     html += `<div class="card">
       <h2>${section.title}</h2>
       <p class="passage-title" style="color:#e67e22;font-weight:600">${section.directions}</p>
