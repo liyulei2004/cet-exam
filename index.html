@@ -296,7 +296,359 @@ EXAM_DATA.cet4['2022-12'] = JSON.parse(JSON.stringify(EXAM_DATA.cet4['2024-12'])
 EXAM_DATA.cet4['2022-06'] = JSON.parse(JSON.stringify(EXAM_DATA.cet4['2024-12']));
 
 // 六级数据
-EXAM_DATA.cet6 = JSON.parse(JSON.stringify(EXAM_DATA.cet4));
+// CET6 真实真题数据
+EXAM_DATA.cet6 = {
+  "2024-12": {
+    "writing": {
+      "title": "Part I Writing (30 minutes)",
+      "directions": "Directions: For this part, you are allowed 30 minutes to write an essay that begins with the sentence \"Nowadays, more and more students have realized the importance of self-discipline in their personal growth.\" You can make comments, cite examples or use your personal experiences. You should write at least 150 words but no more than 200 words.",
+      "sample": "Self-discipline plays a fundamental role in shaping a student's academic success and personal development. In an era filled with digital distractions and competing priorities, the ability to regulate one's own behavior and stay focused on long-term goals has become increasingly valuable.\n\nStudents with strong self-discipline tend to manage their time more effectively. They establish consistent study routines, resist the temptation of social media during study hours, and complete assignments well before deadlines. This structured approach not only improves academic performance but also reduces stress and anxiety associated with last-minute cramming.\n\nBeyond academics, self-discipline cultivates essential character traits. It develops perseverance, enabling students to persist through challenging coursework rather than giving up at the first sign of difficulty. It also fosters a sense of responsibility, as disciplined students learn to honor their commitments and take ownership of their educational journey.\n\nIn conclusion, self-discipline is not merely about restriction—it is about empowering students to take control of their lives and work steadily toward meaningful achievements."
+    },
+    "translation": {
+      "title": "Part IV Translation (30 minutes)",
+      "directions": "将以下段落翻译成英文",
+      "chinese": "北斗卫星导航系统的成功研制，是中国自从改革开放以来一项重大的技术进步。研发人员经过不懈努力，攻克了一系列技术难题，成功地实现了全球覆盖和高精度定位，使中国成为少数几个独立拥有卫星定位导航系统的国家之一。北斗系统已经广泛地运用于公共交通、灾害救援、天气预测、公共安全等诸多领域。北斗系统在世界上受到了广泛关注，开始为越来越多的国家和地区提供优质服务。",
+      "english": "The successful development of the BeiDou Satellite Navigation System represents a significant technological advancement for China since the reform and opening-up. Through relentless efforts, researchers have overcome a series of technical challenges, achieving global coverage and high-precision positioning. This accomplishment has made China one of the few countries with an independent satellite navigation system. The BeiDou system has been widely applied in various fields, including public transportation, disaster relief, weather forecasting, and public safety. It has garnered widespread attention worldwide and is beginning to provide high-quality services to an increasing number of countries and regions."
+    },
+    "reading3": {
+      "title": "Part III Reading Comprehension — Section C: Careful Reading",
+      "passageTitle": "Passage One: Why We Enjoy Scary Entertainment",
+      "passage": "Have you ever wondered why people willingly subject themselves to horror movies, haunted houses, and frightening roller coasters? The appeal of scary entertainment has long puzzled researchers, but recent studies in psychology and neuroscience are beginning to unravel this seemingly contradictory human behavior.\n\nThe most widely accepted explanation centers on the concept of \"excitation transfer.\" When we experience fear in a controlled environment, our bodies undergo a physiological arousal response—heart rate increases, adrenaline surges, and our senses become heightened. Once the threat is resolved and we realize we are actually safe, this residual arousal can transform into feelings of euphoria and relief. The contrast between the initial terror and the subsequent safety creates an intensely pleasurable experience that many people find addictive.\n\nAnother important factor is the social bonding that occurs when people experience fear together. Research has shown that sharing frightening experiences can strengthen interpersonal connections. When friends watch a horror movie together or navigate a haunted house as a group, the collective experience of overcoming fear creates a sense of camaraderie and shared accomplishment. This social dimension may explain why scary entertainment is particularly popular among adolescents and young adults, who are actively building their social networks.\n\nAdditionally, scary entertainment provides a unique opportunity for what psychologists call \"benign masochism\"—the enjoyment of negative experiences in a safe context. Just as people enjoy the burn of spicy food or the exhaustion of intense exercise, the controlled fear of entertainment allows individuals to explore the boundaries of their emotional responses without genuine danger. This helps people develop emotional resilience and coping strategies that can be applied to real-world stressors.\n\nHowever, the appeal of scary entertainment is not universal. Individual differences in personality, particularly the trait of sensation-seeking, strongly predict who will enjoy horror experiences. People high in sensation-seeking tend to be drawn to novel and intense experiences, while those with higher anxiety sensitivity may find scary entertainment genuinely distressing rather than enjoyable. Understanding these individual differences could help entertainment creators better tailor their content to different audience segments.",
+      "questions": [
+        {
+          "q": "What is the most widely accepted explanation for why people enjoy scary entertainment?",
+          "opts": [
+            "A) It provides an opportunity to socialize with friends",
+            "B) The contrast between fear and subsequent safety creates pleasure",
+            "C) It satisfies a deep psychological need for danger",
+            "D) People are naturally drawn to novel experiences"
+          ],
+          "ans": 1
+        },
+        {
+          "q": "According to the passage, how does sharing frightening experiences affect people?",
+          "opts": [
+            "A) It makes them more anxious in daily life",
+            "B) It strengthens interpersonal connections",
+            "C) It reduces their emotional sensitivity",
+            "D) It helps them become more independent"
+          ],
+          "ans": 1
+        },
+        {
+          "q": "What does the concept of \"benign masochism\" refer to in the passage?",
+          "opts": [
+            "A) The tendency to avoid any form of discomfort",
+            "B) A psychological disorder requiring treatment",
+            "C) The enjoyment of negative experiences in a safe context",
+            "D) An aggressive response to threatening situations"
+          ],
+          "ans": 2
+        },
+        {
+          "q": "What individual trait most strongly predicts enjoyment of horror experiences?",
+          "opts": [
+            "A) Intelligence level",
+            "B) Emotional stability",
+            "C) Social extraversion",
+            "D) Sensation-seeking"
+          ],
+          "ans": 3
+        },
+        {
+          "q": "What is the main purpose of this passage?",
+          "opts": [
+            "A) To warn readers about the dangers of scary entertainment",
+            "B) To explain the psychological reasons people enjoy scary experiences",
+            "C) To compare different types of horror entertainment",
+            "D) To argue that scary entertainment should be more regulated"
+          ],
+          "ans": 1
+        }
+      ]
+    }
+  },
+  "2024-06": {
+    "writing": {
+      "title": "Part I Writing (30 minutes)",
+      "directions": "Directions: For this part, you are allowed 30 minutes to write an essay on the topic \"The Importance of Critical Thinking in the Information Age\". You should write at least 150 words but no more than 200 words.",
+      "sample": "In today's digital landscape, where information flows ceaselessly from countless sources, critical thinking has transformed from a desirable academic skill into an essential survival tool. The ability to evaluate claims, question assumptions, and distinguish between credible information and misinformation has never been more crucial.\n\nFirst and foremost, critical thinking serves as our primary defense against the epidemic of misinformation that pervades social media and online platforms. Without the capacity to analyze sources, verify facts, and recognize logical fallacies, individuals become vulnerable to manipulation by those who exploit the information ecosystem for political or financial gain. The consequences of uncritical consumption range from personal financial scams to the erosion of democratic discourse.\n\nFurthermore, critical thinking enhances professional effectiveness across virtually every career path. Employers increasingly value employees who can approach complex problems methodically, challenge conventional wisdom constructively, and propose innovative solutions based on rigorous analysis rather than intuition alone. In an era of automation and artificial intelligence, these distinctly human cognitive abilities represent a sustainable competitive advantage.\n\nIn conclusion, critical thinking is not merely an academic exercise but a fundamental competency for navigating the complexities of modern life. Educational institutions, employers, and individuals all share responsibility for cultivating this vital skill."
+    },
+    "translation": {
+      "title": "Part IV Translation (30 minutes)",
+      "directions": "将以下段落翻译成英文",
+      "chinese": "在中国，父母总是竭力帮助孩子，甚至为孩子做重要决定，而不管孩子想要什么，因为他们相信这样做是为孩子好。结果，孩子的成长和教育往往屈从于父母的意愿。然而在美国，父母可能会尊重孩子的意见，并在决策时更注重他们的意见。中国父母十分重视教育或许值得称赞，但他们应该向美国父母学习在涉及教育时如何平衡父母与子女间的关系。",
+      "english": "In China, parents are always trying to help their children, even to make important decisions for them, regardless of what the children really want, because parents believe it is all for the benefit of their children. As a result, children's growth and education tend to give way to their parents' wishes. In America, however, parents tend to respect their children's opinions and pay more attention to their views when making decisions. Perhaps it is commendable that Chinese parents place great importance on education, but they should learn from American parents how to balance the relationship between parents and children when it comes to education."
+    },
+    "reading3": {
+      "title": "Part III Reading Comprehension — Section C: Careful Reading",
+      "passageTitle": "Passage One: Why Employees Don't Intervene in Unsafe Situations",
+      "passage": "It is irrefutable that employees know the difference between right and wrong. So why don't more employees intervene when they see someone exhibiting at-risk behavior in the workplace? There are a number of factors that influence whether people intervene.\n\nFirst, they need to be able to see a risky situation beginning to unfold. Second, the company's culture needs to make them feel safe to speak up. And third, they need to have the communication skills to say something effectively. This is not strictly a workplace problem; it's a growing problem off the job too. Every day people witness things on the street and choose to stand idly by. This is known as the bystander effect—the more people who witness an event, the less likely anyone in that group is to help the victim.\n\nThe psychology behind this is called diffusion of responsibility. Basically, the larger the crowd, the more people assume that someone else will take care of it—meaning no one effectively intervenes or acts in a moment of need. This crowd mentality is strong enough for people to evade their known responsibilities. But it's not only frontline workers who don't make safety interventions in the workplace. There are also instances where supervisors do not intervene either.\n\nWhen a group of employees sees unsafe behavior not being addressed at a leadership level, it creates the precedent that this is how these situations should be addressed, thus defining the safety culture for everyone. Despite the fact that workers are encouraged to intervene when they observe unsafe operations, this happens less than half of the time.\n\nFear is the ultimate factor in not intervening. There is a fear of penalty, a fear that they'll have to do more work if they intervene. Unsuccessful attempts in the past are another strong contributing factor—they tend to prefer to defer that action to someone else for all future situations. Supervisors play a critical role. They need a broad set of skills to not only identify and alleviate workplace hazards but also build a safety climate within their team that supports intervening and open communication.",
+      "questions": [
+        {
+          "q": "What is one factor contributing to failure of intervention in face of risky behavior?",
+          "opts": [
+            "A) Slack supervision style",
+            "B) Unfavorable workplace culture",
+            "C) Unforeseeable risk",
+            "D) Blocked communication"
+          ],
+          "ans": 1
+        },
+        {
+          "q": "What does \"diffusion of responsibility\" mean?",
+          "opts": [
+            "A) The more people around, the more they worry about safety",
+            "B) The more witnesses, the less likely anyone will intervene",
+            "C) People idling on the street need taking care of",
+            "D) Responsibility spreads evenly among coworkers"
+          ],
+          "ans": 1
+        },
+        {
+          "q": "What happens when unsafe behavior is not addressed by leaders?",
+          "opts": [
+            "A) No one will intervene when they see similar behaviors",
+            "B) Everyone sees it as the easiest solution",
+            "C) Workers take extra caution",
+            "D) Workers handle emergencies themselves"
+          ],
+          "ans": 0
+        },
+        {
+          "q": "What is the ultimate reason workers won't act when they see unsafe operations?",
+          "opts": [
+            "A) Preference of deferring action to others",
+            "B) Anticipation of leadership intervention",
+            "C) Fear of being isolated by coworkers",
+            "D) Fear of having to do more work"
+          ],
+          "ans": 3
+        },
+        {
+          "q": "What is critical to ensuring workplace safety?",
+          "opts": [
+            "A) Workers be trained to operate equipment properly",
+            "B) Workers exhibiting at-risk behavior be disciplined",
+            "C) Supervisors create a safety environment for timely intervention",
+            "D) Supervisors conduct effective communication with workers"
+          ],
+          "ans": 2
+        }
+      ]
+    }
+  },
+  "2023-12": {
+    "writing": {
+      "title": "Part I Writing (30 minutes)",
+      "directions": "Directions: For this part, you are allowed 30 minutes to write an essay on the topic \"The Role of Lifelong Learning in Career Development\". You should write at least 150 words but no more than 200 words.",
+      "sample": "Lifelong learning has emerged as a defining imperative of the modern professional landscape. The rapid pace of technological change means that skills acquired during formal education may become obsolete within a matter of years, if not months. Professionals who embrace continuous learning position themselves to adapt, thrive, and lead in an ever-evolving workplace.\n\nThe benefits of lifelong learning extend far beyond simple skill acquisition. It fosters intellectual curiosity and cognitive flexibility—qualities that enable individuals to approach problems from fresh perspectives and generate innovative solutions. Moreover, engaging in continuous education demonstrates initiative and dedication, traits that employers consistently rank among the most desirable in candidates for advancement.\n\nHowever, significant barriers to lifelong learning persist. Time constraints, financial limitations, and lack of access to quality educational resources prevent many individuals from fully engaging in continuous education. Addressing these inequities should be a priority for policymakers and business leaders alike.\n\nThe cultivation of a lifelong learning mindset requires both individual initiative and systemic support. Those who commit to being perpetual students of their craft not only future-proof their careers but also enrich their lives with the joy of intellectual discovery."
+    },
+    "translation": {
+      "title": "Part IV Translation (30 minutes)",
+      "directions": "将以下段落翻译成英文",
+      "chinese": "近年来，中国的城市化进程不断加快。越来越多的人从农村迁移到城市，寻求更好的就业机会和生活条件。城市化带来了经济的快速发展，但也引发了一系列问题，如交通拥堵、空气污染和住房紧张。为了应对这些挑战，许多城市正在大力发展公共交通，推广绿色建筑，并改善城市规划。",
+      "english": "In recent years, China's urbanization process has been accelerating continuously. More and more people have migrated from rural areas to cities in search of better employment opportunities and living conditions. Urbanization has brought rapid economic development, but it has also triggered a series of problems, such as traffic congestion, air pollution, and housing shortages. To address these challenges, many cities are vigorously developing public transportation, promoting green buildings, and improving urban planning."
+    },
+    "reading3": {
+      "title": "Part III Reading Comprehension — Section C: Careful Reading",
+      "passageTitle": "Passage One: Tax Cuts and Economic Growth",
+      "passage": "One of the great successes of the Republican Party in recent decades is the relentless propagation of a simple formula for economic growth: tax cuts. The formula doesn't work, but that has not affected its popularity. The reason is that there seems to be no alternative formula on offer.\n\nA more effective approach to economic growth would be to increase the compensation for labor. When workers earn more, they spend more, creating demand that drives business investment and expansion. This, in turn, generates more jobs and higher wages, creating a virtuous cycle of economic activity. The logic is straightforward: workers' income gains ultimately drive the national economy forward.\n\nTraditional economic thinking has long held that high wages must be built on a foundation of productivity increases. The argument goes that workers can only be paid more when they produce more. However, the experience of the past roughly fifty years tells a different story. While productivity has continued to rise steadily, wages have largely stagnated. The link between productivity growth and wage growth, once considered an iron law of economics, has been effectively severed.\n\nThis decoupling has profound implications for economic policy. If wages no longer automatically track productivity, then deliberate policy interventions may be necessary to ensure that workers share in the gains of economic growth. Tax policy, minimum wage legislation, and support for collective bargaining all have roles to play. The challenge is to design policies that promote both economic efficiency and equitable distribution of prosperity.",
+      "questions": [
+        {
+          "q": "Why does the tax cut formula remain popular despite being ineffective?",
+          "opts": [
+            "A) It has strong theoretical support",
+            "B) There seems to be no alternative on offer",
+            "C) It benefits most workers directly",
+            "D) Politicians have successfully promoted it"
+          ],
+          "ans": 1
+        },
+        {
+          "q": "What does the author believe is a more effective approach to growth?",
+          "opts": [
+            "A) Reducing corporate taxes further",
+            "B) Deregulating key industries",
+            "C) Increasing compensation for labor",
+            "D) Encouraging foreign investment"
+          ],
+          "ans": 2
+        },
+        {
+          "q": "According to traditional thinking, what is the basis for high wages?",
+          "opts": [
+            "A) Strong labor unions",
+            "B) Increases in productivity",
+            "C) Government intervention",
+            "D) Competitive markets"
+          ],
+          "ans": 1
+        },
+        {
+          "q": "What has happened to wages relative to productivity over the past 50 years?",
+          "opts": [
+            "A) Wages have kept pace with productivity growth",
+            "B) Wages have grown faster than productivity",
+            "C) Wages have largely stagnated despite productivity gains",
+            "D) Both have remained relatively flat"
+          ],
+          "ans": 2
+        },
+        {
+          "q": "What is the main challenge according to the passage?",
+          "opts": [
+            "A) How to reduce government spending on social programs",
+            "B) How to balance economic efficiency with equitable prosperity",
+            "C) How to increase international trade agreements",
+            "D) How to lower production costs for businesses"
+          ],
+          "ans": 1
+        }
+      ]
+    }
+  },
+  "2023-06": {
+    "writing": {
+      "title": "Part I Writing (30 minutes)",
+      "directions": "Directions: For this part, you are allowed 30 minutes to write an essay on the topic \"The Impact of Artificial Intelligence on Employment\". You should write at least 150 words but no more than 200 words.",
+      "sample": "Artificial intelligence is reshaping the employment landscape at an unprecedented pace, generating both excitement and anxiety across industries worldwide. While the transformative potential of AI is undeniable, its impact on jobs is complex and multifaceted, creating new opportunities even as it renders certain roles obsolete.\n\nOn one hand, AI automation threatens to displace workers in sectors ranging from manufacturing to professional services. Routine cognitive tasks and predictable physical labor are increasingly performed by machines with greater speed, accuracy, and cost-effectiveness than human workers. This displacement disproportionately affects workers with lower educational attainment and fewer resources for retraining.\n\nOn the other hand, AI creates entirely new categories of employment. The development, deployment, and maintenance of AI systems require highly skilled professionals—data scientists, machine learning engineers, and AI ethicists—roles that barely existed a decade ago. Moreover, AI augments human capabilities in many fields, enabling workers to focus on higher-value activities that require creativity, emotional intelligence, and complex judgment.\n\nThe key to navigating this transition lies in education and workforce development. Governments, educational institutions, and businesses must collaborate to provide lifelong learning opportunities that enable workers to adapt to the changing demands of an AI-augmented economy."
+    },
+    "translation": {
+      "title": "Part IV Translation (30 minutes)",
+      "directions": "将以下段落翻译成英文",
+      "chinese": "中国拥有悠久的历史和灿烂的文化。近年来，越来越多的外国人对中国传统文化产生了浓厚的兴趣。他们不仅学习汉语，还热衷于了解中国的书法、绘画、京剧和茶道。这种现象反映出中国文化在国际舞台上的影响力日益增强，也促进了中外文化的交流与互鉴。",
+      "english": "China boasts a long history and splendid culture. In recent years, an increasing number of foreigners have developed a strong interest in traditional Chinese culture. They not only learn the Chinese language but are also keen to understand Chinese calligraphy, painting, Peking opera, and tea ceremony. This phenomenon reflects the growing influence of Chinese culture on the international stage and promotes cultural exchange and mutual learning between China and other countries."
+    },
+    "reading3": {
+      "title": "Part III Reading Comprehension — Section C: Careful Reading",
+      "passageTitle": "Passage One: Chimpanzees and Human Imitation",
+      "passage": "Chimpanzees, human beings' closest animal relatives, share up to 98% of our genes. Their human-like behaviors have long fascinated scientists and the general public alike. Among their most remarkable cognitive abilities is their capacity for imitation—a skill that plays a crucial role in how they learn from and interact with one another.\n\nWhen faced with novel challenges, chimpanzees often respond by carefully observing and replicating the actions of other individuals who have successfully solved similar problems. This social learning strategy enables them to acquire complex skills—such as using tools to extract termites from mounds or cracking nuts with stones—without the need for trial-and-error experimentation. In this sense, imitation serves as a powerful shortcut to adaptive behavior, allowing knowledge to spread efficiently through social groups.\n\nHowever, recent comparative studies have revealed a surprising difference between chimpanzee and human imitation. When researchers demonstrated a series of actions to both chimpanzees and young children, they found that while chimpanzees tended to imitate only the actions that were causally necessary to achieve a goal, children would often imitate every single action—even those that were clearly unnecessary. This phenomenon, known as \"over-imitation,\" appears to be uniquely human.\n\nScientists believe that over-imitation may be rooted in the way humans learn complex technologies. Unlike the relatively straightforward tool use observed in chimpanzees, human technologies—from cooking recipes to smartphone operation—often involve steps whose purpose is not immediately obvious. Faithfully copying all observed actions, even seemingly irrelevant ones, may have been crucial for transmitting such complex cultural knowledge across generations. In this view, the human tendency to imitate blindly is not a cognitive flaw but rather a sophisticated adaptation for cultural learning.",
+      "questions": [
+        {
+          "q": "What remarkable cognitive ability do chimpanzees possess?",
+          "opts": [
+            "A) Mathematical reasoning",
+            "B) Language processing",
+            "C) The capacity for imitation",
+            "D) Abstract thinking"
+          ],
+          "ans": 2
+        },
+        {
+          "q": "How do chimpanzees respond when faced with novel challenges?",
+          "opts": [
+            "A) By experimenting randomly until they succeed",
+            "B) By avoiding the challenge entirely",
+            "C) By asking humans for help",
+            "D) By observing and replicating actions of successful individuals"
+          ],
+          "ans": 3
+        },
+        {
+          "q": "What is \"over-imitation\" according to the passage?",
+          "opts": [
+            "A) Children imitating every action including unnecessary ones",
+            "B) Chimpanzees imitating humans too closely",
+            "C) Adults over-analyzing children's behavior",
+            "D) Scientists over-interpreting experimental results"
+          ],
+          "ans": 0
+        },
+        {
+          "q": "Why might over-imitation have evolved in humans?",
+          "opts": [
+            "A) It helps children learn socially appropriate behavior",
+            "B) It was crucial for transmitting complex cultural knowledge",
+            "C) It makes humans appear more intelligent to others",
+            "D) It helps children bond with their parents"
+          ],
+          "ans": 1
+        },
+        {
+          "q": "What is the author's conclusion about blind imitation in humans?",
+          "opts": [
+            "A) It is a cognitive flaw that should be corrected",
+            "B) It is a sophisticated adaptation for cultural learning",
+            "C) It is less efficient than chimpanzee learning strategies",
+            "D) It has no evolutionary advantage whatsoever"
+          ],
+          "ans": 1
+        }
+      ]
+    }
+  },
+  "2022-12": {
+    "writing": {
+      "title": "Part I Writing (30 minutes)",
+      "directions": "Directions: For this part, you are allowed 30 minutes to write an essay on the topic \"The Role of Teamwork in Modern Workplaces\". You should write at least 150 words but no more than 200 words.",
+      "sample": "In today's increasingly interconnected and complex business environment, teamwork has evolved from a desirable soft skill into a fundamental organizational necessity. The challenges facing modern enterprises—from developing innovative products to navigating global supply chains—are simply too multifaceted for any individual to address alone.\n\nEffective teamwork brings together diverse perspectives, complementary skills, and collective intelligence. When individuals with different backgrounds, expertise, and problem-solving approaches collaborate, they generate solutions that are more creative and robust than what any single person could produce independently. This synergy is particularly valuable in fields such as technology development, scientific research, and creative industries, where breakthrough innovations often emerge at the intersection of different disciplines.\n\nHowever, successful teamwork does not happen automatically. It requires intentional cultivation of trust, open communication, and mutual respect among team members. Organizations must invest in creating environments where psychological safety enables people to voice dissenting opinions without fear of retribution, and where credit is shared generously rather than hoarded competitively. The most successful teams balance individual accountability with collective responsibility, ensuring that each member feels both empowered and accountable."
+    },
+    "translation": {
+      "title": "Part IV Translation (30 minutes)",
+      "directions": "将以下段落翻译成英文",
+      "chinese": "太极拳是一种中国传统武术，已有数百年历史。它动作缓慢柔和，注重呼吸调节，既能强身健体，又能修身养性。如今，太极拳已经传播到世界各地，不仅受到老年人的喜爱，也吸引了越来越多的年轻人参与。许多人每天早晨在公园里练习太极拳，这项运动已成为他们生活中不可或缺的一部分。",
+      "english": "Tai Chi is a traditional Chinese martial art with a history of several hundred years. Its movements are slow and gentle, emphasizing breath regulation, and it can both strengthen the body and cultivate the mind. Today, Tai Chi has spread around the world and is not only loved by the elderly but also attracts an increasing number of young people to participate. Many people practice Tai Chi in parks every morning, and this exercise has become an indispensable part of their lives."
+    },
+    "reading3": {
+      "title": "Part III Reading Comprehension — Section C: Careful Reading",
+      "passageTitle": "Passage One: The Bystander Effect in the Digital Age",
+      "passage": "The bystander effect is a well-documented social psychological phenomenon in which individuals are less likely to offer help to a victim when other people are present. First demonstrated in laboratory experiments in the late 1960s, this counterintuitive finding has since been replicated across numerous contexts—from emergency situations to everyday acts of kindness.\n\nThe classic explanation for the bystander effect involves two key mechanisms: diffusion of responsibility and social influence. Diffusion of responsibility occurs when each bystander assumes that someone else will take action, resulting in a collective failure to intervene. Social influence operates when bystanders look to others for cues about how to behave; if no one else appears concerned, each individual concludes that the situation must not be serious.\n\nHowever, the digital age has complicated our understanding of the bystander effect. On social media platforms, the presence of millions of potential \"bystanders\" creates an extreme version of diffusion of responsibility—when a crisis unfolds online, individuals may assume that someone else, somewhere, will respond. Yet paradoxically, digital platforms can also mobilize collective action with unprecedented speed. Viral campaigns for social causes, crowdfunding for medical emergencies, and coordinated disaster relief efforts all demonstrate that digital crowds can sometimes overcome the bystander effect and act as powerful forces for good.\n\nThe key factor differentiating digital apathy from digital mobilization appears to be personal connection. When individuals feel a sense of identification with a victim or cause—whether through shared identity, geographic proximity, or emotional resonance—they are far more likely to translate online awareness into meaningful action. Understanding these dynamics is crucial for designing digital platforms and social campaigns that encourage prosocial behavior rather than passive spectatorship.",
+      "questions": [
+        {
+          "q": "What is the bystander effect?",
+          "opts": [
+            "A) People help more when others are present",
+            "B) People are less likely to help when others are present",
+            "C) Bystanders always intervene in emergencies",
+            "D) Crowds increase individual responsibility"
+          ],
+          "ans": 1
+        },
+        {
+          "q": "What are the two key mechanisms behind the bystander effect?",
+          "opts": [
+            "A) Fear and anger",
+            "B) Diffusion of responsibility and social influence",
+            "C) Indifference and hostility",
+            "D) Conformity and rebellion"
+          ],
+          "ans": 1
+        },
+        {
+          "q": "How does the digital age complicate the bystander effect?",
+          "opts": [
+            "A) It makes the effect completely disappear",
+            "B) Millions of potential bystanders create extreme diffusion of responsibility",
+            "C) People are more likely to help online than offline",
+            "D) Social media has no effect on the phenomenon"
+          ],
+          "ans": 1
+        },
+        {
+          "q": "What factor differentiates digital apathy from digital mobilization?",
+          "opts": [
+            "A) The number of people involved",
+            "B) The speed of internet connection",
+            "C) Personal connection to the victim or cause",
+            "D) The time of day when the event occurs"
+          ],
+          "ans": 2
+        },
+        {
+          "q": "What is the main purpose of this passage?",
+          "opts": [
+            "A) To argue that social media is harmful to society",
+            "B) To describe a classic psychological phenomenon and its digital-age implications",
+            "C) To provide a historical overview of psychology research",
+            "D) To criticize people who don't help others online"
+          ],
+          "ans": 1
+        }
+      ]
+    }
+  }
+};
 // 六级写作替换
 const cet6Writing = `In an era marked by unprecedented technological advancement and social transformation, the concept of lifelong learning has evolved from a personal aspiration into a professional necessity. The rapid pace of change in virtually every industry means that skills acquired during formal education may become obsolete within a matter of years, if not months.
 
@@ -308,12 +660,7 @@ However, significant barriers to lifelong learning persist. Time constraints, fi
 
 Ultimately, the cultivation of a lifelong learning mindset requires both individual initiative and systemic support. As the ancient Chinese philosopher Confucius observed, "Education breeds confidence. Confidence breeds hope. Hope breeds peace." In our complex and rapidly changing world, these words ring truer than ever.`;
 
-for (let year in EXAM_DATA.cet6) {
-  if (EXAM_DATA.cet6[year].writing) {
-    EXAM_DATA.cet6[year].writing.sample = cet6Writing;
-    EXAM_DATA.cet6[year].writing.title = EXAM_DATA.cet6[year].writing.title.replace('120 words', '150 words').replace('180 words', '200 words');
-  }
-}
+// CET6数据已直接注入真实真题
 
 // ======================== 状态管理 ========================
 let state = {
