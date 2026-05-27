@@ -157,8 +157,23 @@ body{font-family:'Times New Roman','Microsoft YaHei','PingFang SC',serif;backgro
       <a class="section-link" data-section="reading3">仔细阅读 Passage 1 <span class="badge">阅读</span></a>
       <a class="section-link" data-section="reading3b">仔细阅读 Passage 2 <span class="badge">阅读</span></a>
       <a class="section-link" data-section="translation">翻译 <span class="badge">30min</span></a>
+      <hr style="border-color:#eee;margin:8px 0">
+      <a class="section-link" href="#" onclick="openFeedback();return false" style="color:#e67e22">意见反馈</a>
     </div>
   </aside>
+
+<!-- 反馈弹窗 -->
+<div id="feedbackModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);z-index:99999;justify-content:center;align-items:center">
+  <div style="background:#fff;border-radius:12px;padding:30px;width:420px;max-width:90vw">
+    <h3 style="margin-bottom:16px">意见反馈</h3>
+    <textarea id="feedbackText" rows="5" style="width:100%;border:1px solid #ddd;border-radius:8px;padding:12px;font-size:14px;resize:vertical" placeholder="请告诉我们你的建议、发现的错误、想要的功能..."></textarea>
+    <div style="display:flex;gap:10px;margin-top:12px;justify-content:flex-end">
+      <button onclick="closeFeedback()" style="padding:8px 20px;border:1px solid #ddd;border-radius:6px;background:#fff;cursor:pointer">取消</button>
+      <button onclick="submitFeedback()" style="padding:8px 20px;border:none;border-radius:6px;background:#1a73e8;color:#fff;cursor:pointer">提交</button>
+    </div>
+    <p id="feedbackMsg" style="margin-top:10px;font-size:13px;display:none"></p>
+  </div>
+</div>
 
   <main class="main" id="mainContent">
     <!-- 动态填充 -->
@@ -2227,6 +2242,30 @@ document.addEventListener('keydown', (e) => {
     closeSentencePopup();
     hideTooltip();
   }
+});
+
+// ====== 反馈功能 ======
+function openFeedback() {
+  document.getElementById('feedbackModal').style.display = 'flex';
+}
+function closeFeedback() {
+  document.getElementById('feedbackModal').style.display = 'none';
+  document.getElementById('feedbackMsg').style.display = 'none';
+}
+function submitFeedback() {
+  var text = document.getElementById('feedbackText').value.trim();
+  if (!text) return;
+  var issues = JSON.parse(localStorage.getItem('cet_feedback') || '[]');
+  issues.push({text: text, time: new Date().toISOString(), page: state.section, year: state.year});
+  localStorage.setItem('cet_feedback', JSON.stringify(issues));
+  document.getElementById('feedbackText').value = '';
+  var msg = document.getElementById('feedbackMsg');
+  msg.style.display = 'block'; msg.style.color = '#27ae60';
+  msg.textContent = '已保存！感谢反馈（共' + issues.length + '条）';
+  setTimeout(closeFeedback, 1500);
+}
+document.getElementById('feedbackModal').addEventListener('click', function(e) {
+  if (e.target === this) closeFeedback();
 });
 
 // 初始渲染
