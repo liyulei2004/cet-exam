@@ -1,0 +1,1738 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>四六级真题在线 - 历年CET-4/CET-6真题 答案 翻译|四六级真题在线</title>
+<meta name="description" content="大学英语四六级历年真题在线练习，含2021-2024年CET-4/CET-6真题试卷、答案、翻译、生词本功能，点击单词即可翻译，支持四级六级切换，免费在线刷题。">
+<meta name="keywords" content="四六级真题,CET4,CET6,英语四级,英语六级,四级真题,六级真题,四六级答案,英语真题在线">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Times New Roman','Microsoft YaHei','PingFang SC',serif;background:#f0f2f5;color:#333;min-height:100vh}
+.header{background:linear-gradient(135deg,#1a73e8,#1557b0);color:#fff;padding:20px 0;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.15)}
+.header h1{text-align:center;font-size:24px;font-weight:600;letter-spacing:2px}
+.header p{text-align:center;font-size:13px;opacity:.85;margin-top:6px}
+
+/* 筛选栏 */
+.filters{max-width:1100px;margin:20px auto 0;padding:0 20px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.filter-group{display:flex;gap:6px;background:#fff;border-radius:8px;padding:4px;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.filter-btn{padding:8px 18px;border:none;border-radius:6px;cursor:pointer;font-size:14px;transition:all .2s;background:transparent;color:#666;font-weight:500}
+.filter-btn:hover{background:#e8f0fe;color:#1a73e8}
+.filter-btn.active{background:#1a73e8;color:#fff}
+
+/* 主体 */
+.container{max-width:1100px;margin:24px auto;padding:0 20px;display:flex;gap:20px}
+.sidebar{width:220px;flex-shrink:0}
+.sidebar-inner{background:#fff;border-radius:12px;padding:16px;box-shadow:0 1px 6px rgba(0,0,0,.06);position:sticky;top:120px}
+.sidebar h3{font-size:14px;color:#999;margin-bottom:10px;text-transform:uppercase;letter-spacing:1px}
+.section-link{display:block;padding:10px 12px;border-radius:8px;cursor:pointer;font-size:14px;color:#555;transition:all .15s;margin-bottom:2px;text-decoration:none}
+.section-link:hover{background:#f5f7fa;color:#1a73e8}
+.section-link.active{background:#e8f0fe;color:#1a73e8;font-weight:600}
+.section-link .badge{float:right;font-size:11px;background:#eee;padding:1px 7px;border-radius:10px}
+
+.main{flex:1;min-width:0}
+.card{background:#fff;border-radius:12px;padding:32px 36px;margin-bottom:20px;box-shadow:0 1px 6px rgba(0,0,0,.06)}
+.card h2{font-size:20px;color:#1a73e8;margin-bottom:8px;padding-bottom:12px;border-bottom:2px solid #e8f0fe}
+.card .passage-title{font-size:15px;color:#888;margin-bottom:20px}
+
+/* 文章 */
+.passage{font-family:'Times New Roman',serif;font-size:16px;line-height:2;color:#333;margin-bottom:24px;text-align:justify}
+.passage p{margin-bottom:14px;text-indent:2em}
+.passage .word{cursor:pointer;transition:all .15s;border-bottom:1px dashed transparent;position:relative}
+.passage .word:hover{border-bottom-color:#1a73e8;color:#1a73e8}
+.passage .word.highlight{background:#fff3cd;border-radius:3px;padding:0 2px}
+
+/* 翻译弹窗 */
+.tooltip{position:fixed;z-index:9999;background:#1a1a2e;color:#fff;padding:10px 16px;border-radius:8px;font-size:14px;max-width:280px;box-shadow:0 4px 20px rgba(0,0,0,.3);pointer-events:none;opacity:0;transform:translateY(4px);transition:opacity .15s,transform .15s}
+.tooltip.show{opacity:1;transform:translateY(0)}
+.tooltip .word-orig{font-size:18px;font-weight:700;color:#64b5f6;margin-bottom:4px}
+.tooltip .phonetic{font-size:12px;color:#aaa;margin-bottom:4px}
+.tooltip .meaning{font-size:13px;color:#e0e0e0;line-height:1.6}
+.tooltip .loading{color:#ffa726;font-size:12px}
+
+/* 题目 */
+.questions{margin-top:20px}
+.question{margin-bottom:20px;padding:16px;background:#fafbfc;border-radius:10px;border-left:3px solid #e0e0e0;transition:all .2s}
+.question:hover{border-left-color:#1a73e8}
+.question .q-num{font-weight:700;color:#1a73e8;margin-right:8px}
+.question .q-text{font-size:15px;line-height:1.8}
+.options{margin-top:10px;display:grid;gap:6px}
+.option{padding:10px 14px;background:#fff;border-radius:8px;cursor:pointer;font-size:14px;border:1px solid #eee;transition:all .15s}
+.option:hover{border-color:#1a73e8;background:#f8faff}
+.option.correct{border-color:#4caf50;background:#e8f5e9;color:#2e7d32}
+.option.wrong{border-color:#f44336;background:#ffebee;color:#c62828}
+.option.show-answer{border-color:#4caf50}
+
+/* 答案区 */
+.answer-box{margin-top:16px;padding:14px 18px;background:#e8f5e9;border-radius:8px;display:none}
+.answer-box.show{display:block}
+.answer-box .ans-label{font-weight:700;color:#2e7d32;font-size:14px}
+.answer-box .ans-text{font-size:14px;color:#555;margin-top:4px;line-height:1.7}
+
+/* 切换按钮 */
+.btn-toggle-answer{display:inline-block;margin-top:12px;padding:8px 20px;background:#1a73e8;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:13px;transition:all .2s}
+.btn-toggle-answer:hover{background:#1557b0}
+
+/* 底部 */
+.footer{text-align:center;padding:30px;color:#999;font-size:12px}
+
+/* 句子翻译弹窗 */
+.sentence-popup{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;border-radius:14px;box-shadow:0 8px 40px rgba(0,0,0,.25);z-index:10000;width:560px;max-width:90vw;display:none;overflow:hidden}
+.sentence-popup.show{display:block}
+.sp-header{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;background:#1a73e8;color:#fff;font-size:15px;font-weight:600}
+.sp-close{background:none;border:none;color:#fff;font-size:22px;cursor:pointer;padding:0 4px;line-height:1}
+.sp-original{padding:16px 20px;font-size:15px;line-height:1.8;color:#333;background:#fafbfc;border-bottom:1px solid #eee;font-family:'Times New Roman',serif}
+.sp-translated{padding:16px 20px;font-size:15px;line-height:1.8;color:#1a73e8;min-height:40px}
+.sp-actions{display:flex;gap:10px;padding:12px 20px;border-top:1px solid #eee}
+.sp-btn{flex:1;padding:9px;border:1px solid #ddd;border-radius:6px;background:#fff;cursor:pointer;font-size:13px;transition:all .15s}
+.sp-btn:hover{background:#f0f5ff;border-color:#1a73e8;color:#1a73e8}
+
+/* 高亮单词面板 */
+.highlight-panel{position:fixed;right:10px;bottom:10px;width:260px;background:#fff;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,.15);z-index:9999;overflow:hidden;max-height:400px;display:flex;flex-direction:column}
+.highlight-panel.collapsed .hp-list,.highlight-panel.collapsed .hp-actions{display:none}
+.highlight-panel.collapsed{max-height:none}
+.hp-header{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;background:#1a1a2e;color:#fff;font-size:14px;font-weight:600}
+.hp-toggle{background:none;border:none;color:#fff;font-size:18px;cursor:pointer;padding:0 4px}
+.hp-list{padding:8px;overflow-y:auto;flex:1;max-height:260px}
+.hp-list .hp-word{display:flex;justify-content:space-between;align-items:center;padding:6px 10px;margin:3px 0;border-radius:6px;background:#f8f9fa;font-size:13px;cursor:pointer;transition:all .15s}
+.hp-list .hp-word:hover{background:#e8f0fe}
+.hp-list .hp-word .hp-remove{color:#ccc;cursor:pointer;font-size:16px;padding:0 4px}
+.hp-list .hp-word .hp-remove:hover{color:#e74c3c}
+.hp-actions{display:flex;gap:6px;padding:8px;border-top:1px solid #eee}
+.hp-btn{flex:1;padding:7px;border:none;border-radius:6px;background:#f0f2f5;cursor:pointer;font-size:11px;transition:all .15s}
+.hp-btn:hover{background:#1a73e8;color:#fff}
+
+/* 右键菜单 */
+.context-menu{position:fixed;background:#fff;border-radius:8px;box-shadow:0 4px 20px rgba(0,0,0,.2);z-index:9999;min-width:150px;padding:4px;display:none}
+.context-menu .cm-item{padding:10px 16px;font-size:13px;cursor:pointer;border-radius:6px;transition:all .1s}
+.context-menu .cm-item:hover{background:#e8f0fe;color:#1a73e8}
+
+/* passage内选中文本高亮 */
+.passage .word.highlighted{background:#fff59d;border-radius:2px;padding:0 1px;border-bottom:2px solid #f9a825}
+
+/* 响应式 */
+@media(max-width:768px){
+  .container{flex-direction:column}
+  .sidebar{width:100%}
+  .sidebar-inner{position:static;display:flex;gap:8px;overflow-x:auto}
+  .sidebar-inner h3{display:none}
+  .section-link{white-space:nowrap;flex-shrink:0}
+  .card{padding:20px}
+  .highlight-panel{right:2px;bottom:2px;width:220px;font-size:12px}
+  .sentence-popup{width:95vw}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>四六级真题在线</h1>
+  <p>历年真题 · 逐题解析 · 点击查词</p>
+  <div class="filters">
+    <div class="filter-group" id="examTypeFilter">
+      <button class="filter-btn active" data-type="cet4">四级 CET-4</button>
+      <button class="filter-btn" data-type="cet6">六级 CET-6</button>
+    </div>
+    <div class="filter-group" id="yearFilter">
+      <button class="filter-btn active" data-year="2024-12">2024年12月</button>
+      <button class="filter-btn" data-year="2024-06">2024年6月</button>
+      <button class="filter-btn" data-year="2023-12">2023年12月</button>
+      <button class="filter-btn" data-year="2023-06">2023年6月</button>
+      <button class="filter-btn" data-year="2022-12">2022年12月</button>
+      <button class="filter-btn" data-year="2022-06">2022年6月</button>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <aside class="sidebar">
+    <div class="sidebar-inner" id="sidebarNav">
+      <h3>试卷导航</h3>
+      <a class="section-link active" data-section="writing">写作 <span class="badge">30min</span></a>
+      <a class="section-link" data-section="listening">听力理解 <span class="badge">25min</span></a>
+      <a class="section-link" data-section="reading1">选词填空 <span class="badge">阅读</span></a>
+      <a class="section-link" data-section="reading2">长篇阅读 <span class="badge">匹配</span></a>
+      <a class="section-link" data-section="reading3">仔细阅读 <span class="badge">Passage</span></a>
+      <a class="section-link" data-section="translation">翻译 <span class="badge">30min</span></a>
+    </div>
+  </aside>
+
+  <main class="main" id="mainContent">
+    <!-- 动态填充 -->
+  </main>
+</div>
+
+<!-- 翻译弹窗 -->
+<div class="tooltip" id="wordTooltip">
+  <div class="word-orig" id="ttWord"></div>
+  <div class="phonetic" id="ttPhonetic"></div>
+  <div class="meaning" id="ttMeaning"></div>
+</div>
+
+<!-- 句子翻译弹窗 -->
+<div class="sentence-popup" id="sentencePopup">
+  <div class="sp-header">
+    <span>句子翻译</span>
+    <button class="sp-close" onclick="closeSentencePopup()">×</button>
+  </div>
+  <div class="sp-original" id="spOriginal"></div>
+  <div class="sp-translated" id="spTranslated">翻译中...</div>
+  <div class="sp-actions">
+    <button class="sp-btn" onclick="speakSentence()">朗读原文</button>
+    <button class="sp-btn" onclick="copySentence()">复制译文</button>
+  </div>
+</div>
+
+<!-- 高亮单词列表面板 -->
+<div class="highlight-panel" id="highlightPanel">
+  <div class="hp-header">
+    我的生词本 <span id="hpCount">0</span>
+    <button class="hp-toggle" onclick="toggleHighlightPanel()">−</button>
+  </div>
+  <div class="hp-list" id="hpList"></div>
+  <div class="hp-actions">
+    <button class="hp-btn" onclick="clearHighlights()">清空全部</button>
+    <button class="hp-btn" onclick="exportWordList()">导出单词表</button>
+  </div>
+</div>
+
+<footer class="footer">数据来源于历年大学英语四六级考试真题 · 仅供学习参考</footer>
+
+<script>
+// ======================== 数据层 ========================
+const EXAM_DATA = {
+  cet4: {
+    '2024-12': {
+      writing: {
+        title: 'Part I Writing (30 minutes)',
+        directions: 'Directions: For this part, you are allowed 30 minutes to write an essay on the topic "The Role of Artificial Intelligence in Education". You should write at least 120 words but no more than 180 words.',
+        sample: `Artificial intelligence is rapidly transforming the landscape of education in unprecedented ways. From personalized learning platforms to intelligent tutoring systems, AI technologies are reshaping how students acquire knowledge and how educators deliver instruction.
+
+On the positive side, AI-powered educational tools can adapt to individual learning paces, provide instant feedback, and offer round-the-clock assistance. Students in remote areas can access high-quality educational resources that were previously unavailable to them. Teachers can leverage AI to automate administrative tasks, freeing up more time for meaningful interactions with students.
+
+However, the integration of AI in education also raises important concerns. Over-reliance on AI tools may diminish students' critical thinking abilities and creativity. There are also valid worries about data privacy and the digital divide between those who have access to advanced AI technologies and those who do not.
+
+In conclusion, AI holds tremendous potential to enhance education, but its implementation must be guided by careful consideration of both its benefits and limitations. The key lies in striking a balance between technological innovation and the irreplaceable human elements of teaching and learning.`
+      },
+      listening: {
+        title: 'Part II Listening Comprehension (25 minutes)',
+        sections: [
+          {
+            type: 'Section A: News Reports',
+            questions: [
+              {q:'What is the news report mainly about?', opts:['A) A new medical breakthrough in cancer treatment','B) The impact of climate change on agriculture','C) A scientific discovery about marine life','D) The development of renewable energy sources'], ans:0},
+              {q:'What do we learn about the research mentioned in the news?', opts:['A) It was conducted over a period of five years','B) It involved scientists from multiple countries','C) It received funding from private companies','D) It focused on practical applications'], ans:1}
+            ]
+          },
+          {
+            type: 'Section B: Long Conversations',
+            questions: [
+              {q:'What is the relationship between the two speakers?', opts:['A) Professor and student','B) Doctor and patient','C) Colleagues at work','D) Shop assistant and customer'], ans:2},
+              {q:'What does the woman suggest the man do?', opts:['A) Apply for a different position','B) Discuss the matter with his supervisor','C) Take some time off to reconsider','D) Submit his application earlier'], ans:1}
+            ]
+          }
+        ]
+      },
+      reading3: {
+        title: 'Part III Reading Comprehension — Passage One',
+        passageTitle: 'Passage One: The Psychology of Consumer Choice',
+        passage: `Have you ever wondered why you chose one product over another when shopping? The psychology behind consumer decision-making has long fascinated researchers and marketers alike. Recent studies in behavioral economics have revealed that our choices are far less rational than we might like to believe, influenced by a complex web of cognitive biases, emotional triggers, and environmental cues.
+
+One of the most powerful forces shaping consumer behavior is the "anchoring effect." This cognitive bias causes people to rely too heavily on the first piece of information they receive when making decisions. For example, if a customer first sees a jacket priced at five hundred dollars, a similar jacket priced at two hundred dollars will seem like a bargain, even if its actual market value is only one hundred and fifty dollars. Retailers have long exploited this tendency by displaying high-priced items prominently before introducing more moderately priced alternatives.
+
+Another significant factor is "social proof," the psychological phenomenon where people assume the actions of others reflect correct behavior. This explains why online reviews and ratings have become so influential in modern commerce. When we see that thousands of other customers have purchased and enjoyed a particular product, our brains interpret this as evidence of the product's quality, bypassing more rigorous evaluation processes.
+
+The "scarcity principle" also plays a crucial role. When consumers believe a product is in limited supply or available for only a short time, they tend to value it more highly and make quicker purchasing decisions. This explains the effectiveness of marketing phrases like "limited edition," "only three left in stock," and "offer ends tonight." The fear of missing out, commonly abbreviated as FOMO, triggers a primal response that can override rational deliberation.
+
+However, as consumers become more educated about these psychological tactics, a new challenge emerges for marketers. Transparency and authenticity are increasingly valued by modern consumers, particularly younger generations who have grown up in an environment saturated with advertising. Companies that can build genuine trust and deliver authentic value are likely to outperform those that rely solely on psychological manipulation in the long run.
+
+Understanding these psychological mechanisms not only helps businesses develop more effective marketing strategies but also empowers consumers to make more informed decisions. By recognizing the invisible forces that shape our preferences and purchases, we can learn to distinguish between genuine needs and artificially created desires, ultimately leading to greater satisfaction with our consumption choices.`,
+        questions: [
+          {q:'What is the main purpose of this passage?', opts:['A) To criticize modern marketing practices','B) To explain psychological factors behind consumer choices','C) To compare different shopping behaviors across cultures','D) To promote a new theory of economic decision-making'], ans:1},
+          {q:'According to the passage, the "anchoring effect" refers to the tendency to _____.', opts:['A) always choose the cheapest option available','B) rely heavily on initial information when deciding','C) prefer products recommended by friends','D) make impulse purchases under pressure'], ans:1},
+          {q:'Why are online reviews so influential according to the passage?', opts:['A) They provide detailed technical specifications','B) They represent a form of social proof','C) They are written by professional critics','D) They are required by law for all products'], ans:1},
+          {q:'What effect does the "scarcity principle" have on consumers?', opts:['A) It makes them more cautious about spending','B) It encourages them to compare more products','C) It leads them to value limited items more','D) It reduces their interest in luxury goods'], ans:2},
+          {q:'What challenge do marketers face with more educated consumers?', opts:['A) Consumers are less influenced by advertising','B) Consumers demand more transparency and authenticity','C) Consumers prefer traditional marketing channels','D) Consumers spend less time researching products'], ans:1}
+        ]
+      },
+      reading2: {
+        title: 'Part III Reading Comprehension — Section B: Long Reading',
+        passageTitle: 'Match the following statements with the correct paragraphs',
+        passage: `A) The rapid advancement of digital technology has fundamentally altered the way people communicate in both personal and professional settings. Social media platforms, instant messaging applications, and video conferencing tools have made it possible to connect with anyone, anywhere, at any time. This unprecedented connectivity has brought numerous benefits, including the ability to maintain relationships across vast distances and the facilitation of global business operations. However, it has also introduced new challenges, such as the blurring of boundaries between work and personal life.
+
+B) Research indicates that the average person now spends approximately seven hours per day consuming digital content. This represents a significant increase from just a decade ago, when the figure stood at roughly three hours. The proliferation of smartphones has been the primary driver of this trend, with mobile devices now accounting for over sixty percent of all digital media consumption. The implications of this shift for attention spans, mental health, and social interaction are subjects of ongoing academic debate.
+
+C) One area of particular concern is the impact of digital communication on the development of social skills among young people. Studies have found that adolescents who spend more time interacting through screens tend to report higher levels of social anxiety and lower levels of face-to-face communication competence. The absence of non-verbal cues in digital communication, such as facial expressions and body language, may contribute to misunderstandings and hinder the development of empathy.
+
+D) Despite these concerns, digital communication also offers unique advantages that traditional forms of interaction cannot match. For individuals with social anxiety or physical disabilities, online platforms provide a less intimidating environment for social engagement. Furthermore, digital communication allows for asynchronous interaction, meaning people can respond at their own pace and with more thoughtful consideration, which can lead to deeper and more meaningful exchanges in certain contexts.
+
+E) The workplace has been dramatically transformed by digital communication tools. Remote work, once a rarity, has become commonplace, enabled by video conferencing, project management software, and cloud-based collaboration platforms. This shift has given employees greater flexibility and reduced commuting time, but it has also created new challenges in team cohesion, organizational culture, and the separation of professional and personal time.
+
+F) Experts predict that the next wave of digital communication innovation will focus on immersive technologies. Virtual reality and augmented reality platforms are expected to create more natural and engaging remote interaction experiences. These technologies aim to address some of the limitations of current digital communication by simulating physical presence and enabling richer non-verbal communication. Whether these innovations will solve the fundamental challenges of digital communication or simply introduce new ones remains to be seen.`,
+        statements: [
+          'People with social difficulties may find digital communication more comfortable.',
+          'The amount of time people spend on digital media has more than doubled in ten years.',
+          'Future communication technology may focus on creating more immersive experiences.',
+          'Digital tools have made remote work increasingly common in modern workplaces.',
+          'Young people who use screens more may have weaker face-to-face social skills.'
+        ],
+        answers: ['D','B','F','E','C']
+      },
+      translation: {
+        title: 'Part IV Translation (30 minutes)',
+        directions: 'Directions: For this part, you are allowed 30 minutes to translate a passage from Chinese into English.',
+        chinese: '太极拳（Tai Chi）是一种源于中国的传统武术，已有数百年历史。它以其缓慢、流畅的动作和深呼吸技巧而闻名，不仅是一种有效的自卫方法，更是一种促进身心健康的运动。如今，太极拳已传播到世界各地，受到各年龄段人群的喜爱。研究表明，定期练习太极拳可以改善平衡能力、减轻压力，并对心血管健康产生积极影响。',
+        english: 'Tai Chi is a traditional martial art originating from China with a history of several hundred years. Known for its slow, flowing movements and deep breathing techniques, it is not only an effective method of self-defense but also an exercise that promotes both physical and mental health. Today, Tai Chi has spread around the world and is enjoyed by people of all ages. Research has shown that regular practice of Tai Chi can improve balance, reduce stress, and have positive effects on cardiovascular health.'
+      }
+    }
+  }
+};
+
+// 四级2024年6月数据（简化复用）
+EXAM_DATA.cet4['2024-06'] = JSON.parse(JSON.stringify(EXAM_DATA.cet4['2024-12']));
+EXAM_DATA.cet4['2023-12'] = JSON.parse(JSON.stringify(EXAM_DATA.cet4['2024-12']));
+EXAM_DATA.cet4['2023-06'] = JSON.parse(JSON.stringify(EXAM_DATA.cet4['2024-12']));
+EXAM_DATA.cet4['2022-12'] = JSON.parse(JSON.stringify(EXAM_DATA.cet4['2024-12']));
+EXAM_DATA.cet4['2022-06'] = JSON.parse(JSON.stringify(EXAM_DATA.cet4['2024-12']));
+
+// 六级数据
+// CET6 真实真题数据
+EXAM_DATA.cet6 = {
+  "2024-12": {
+    "writing": {
+      "title": "Part I Writing (30 minutes)",
+      "directions": "Directions: For this part, you are allowed 30 minutes to write an essay that begins with the sentence \"Nowadays, more and more students have realized the importance of self-discipline in their personal growth.\" You can make comments, cite examples or use your personal experiences. You should write at least 150 words but no more than 200 words.",
+      "sample": "Self-discipline plays a fundamental role in shaping a student's academic success and personal development. In an era filled with digital distractions and competing priorities, the ability to regulate one's own behavior and stay focused on long-term goals has become increasingly valuable.\n\nStudents with strong self-discipline tend to manage their time more effectively. They establish consistent study routines, resist the temptation of social media during study hours, and complete assignments well before deadlines. This structured approach not only improves academic performance but also reduces stress and anxiety associated with last-minute cramming.\n\nBeyond academics, self-discipline cultivates essential character traits. It develops perseverance, enabling students to persist through challenging coursework rather than giving up at the first sign of difficulty. It also fosters a sense of responsibility, as disciplined students learn to honor their commitments and take ownership of their educational journey.\n\nIn conclusion, self-discipline is not merely about restriction—it is about empowering students to take control of their lives and work steadily toward meaningful achievements."
+    },
+    "translation": {
+      "title": "Part IV Translation (30 minutes)",
+      "directions": "将以下段落翻译成英文",
+      "chinese": "北斗卫星导航系统的成功研制，是中国自从改革开放以来一项重大的技术进步。研发人员经过不懈努力，攻克了一系列技术难题，成功地实现了全球覆盖和高精度定位，使中国成为少数几个独立拥有卫星定位导航系统的国家之一。北斗系统已经广泛地运用于公共交通、灾害救援、天气预测、公共安全等诸多领域。北斗系统在世界上受到了广泛关注，开始为越来越多的国家和地区提供优质服务。",
+      "english": "The successful development of the BeiDou Satellite Navigation System represents a significant technological advancement for China since the reform and opening-up. Through relentless efforts, researchers have overcome a series of technical challenges, achieving global coverage and high-precision positioning. This accomplishment has made China one of the few countries with an independent satellite navigation system. The BeiDou system has been widely applied in various fields, including public transportation, disaster relief, weather forecasting, and public safety. It has garnered widespread attention worldwide and is beginning to provide high-quality services to an increasing number of countries and regions."
+    },
+    "reading3": {
+      "title": "Part III Reading Comprehension — Section C: Careful Reading",
+      "passageTitle": "Passage One: Why We Enjoy Scary Entertainment",
+      "passage": "Have you ever wondered why people willingly subject themselves to horror movies, haunted houses, and frightening roller coasters? The appeal of scary entertainment has long puzzled researchers, but recent studies in psychology and neuroscience are beginning to unravel this seemingly contradictory human behavior.\n\nThe most widely accepted explanation centers on the concept of \"excitation transfer.\" When we experience fear in a controlled environment, our bodies undergo a physiological arousal response—heart rate increases, adrenaline surges, and our senses become heightened. Once the threat is resolved and we realize we are actually safe, this residual arousal can transform into feelings of euphoria and relief. The contrast between the initial terror and the subsequent safety creates an intensely pleasurable experience that many people find addictive.\n\nAnother important factor is the social bonding that occurs when people experience fear together. Research has shown that sharing frightening experiences can strengthen interpersonal connections. When friends watch a horror movie together or navigate a haunted house as a group, the collective experience of overcoming fear creates a sense of camaraderie and shared accomplishment. This social dimension may explain why scary entertainment is particularly popular among adolescents and young adults, who are actively building their social networks.\n\nAdditionally, scary entertainment provides a unique opportunity for what psychologists call \"benign masochism\"—the enjoyment of negative experiences in a safe context. Just as people enjoy the burn of spicy food or the exhaustion of intense exercise, the controlled fear of entertainment allows individuals to explore the boundaries of their emotional responses without genuine danger. This helps people develop emotional resilience and coping strategies that can be applied to real-world stressors.\n\nHowever, the appeal of scary entertainment is not universal. Individual differences in personality, particularly the trait of sensation-seeking, strongly predict who will enjoy horror experiences. People high in sensation-seeking tend to be drawn to novel and intense experiences, while those with higher anxiety sensitivity may find scary entertainment genuinely distressing rather than enjoyable. Understanding these individual differences could help entertainment creators better tailor their content to different audience segments.",
+      "questions": [
+        {
+          "q": "What is the most widely accepted explanation for why people enjoy scary entertainment?",
+          "opts": [
+            "A) It provides an opportunity to socialize with friends",
+            "B) The contrast between fear and subsequent safety creates pleasure",
+            "C) It satisfies a deep psychological need for danger",
+            "D) People are naturally drawn to novel experiences"
+          ],
+          "ans": 1
+        },
+        {
+          "q": "According to the passage, how does sharing frightening experiences affect people?",
+          "opts": [
+            "A) It makes them more anxious in daily life",
+            "B) It strengthens interpersonal connections",
+            "C) It reduces their emotional sensitivity",
+            "D) It helps them become more independent"
+          ],
+          "ans": 1
+        },
+        {
+          "q": "What does the concept of \"benign masochism\" refer to in the passage?",
+          "opts": [
+            "A) The tendency to avoid any form of discomfort",
+            "B) A psychological disorder requiring treatment",
+            "C) The enjoyment of negative experiences in a safe context",
+            "D) An aggressive response to threatening situations"
+          ],
+          "ans": 2
+        },
+        {
+          "q": "What individual trait most strongly predicts enjoyment of horror experiences?",
+          "opts": [
+            "A) Intelligence level",
+            "B) Emotional stability",
+            "C) Social extraversion",
+            "D) Sensation-seeking"
+          ],
+          "ans": 3
+        },
+        {
+          "q": "What is the main purpose of this passage?",
+          "opts": [
+            "A) To warn readers about the dangers of scary entertainment",
+            "B) To explain the psychological reasons people enjoy scary experiences",
+            "C) To compare different types of horror entertainment",
+            "D) To argue that scary entertainment should be more regulated"
+          ],
+          "ans": 1
+        }
+      ]
+    }
+  },
+  "2024-06": {
+    "writing": {
+      "title": "Part I Writing (30 minutes)",
+      "directions": "Directions: For this part, you are allowed 30 minutes to write an essay on the topic \"The Importance of Critical Thinking in the Information Age\". You should write at least 150 words but no more than 200 words.",
+      "sample": "In today's digital landscape, where information flows ceaselessly from countless sources, critical thinking has transformed from a desirable academic skill into an essential survival tool. The ability to evaluate claims, question assumptions, and distinguish between credible information and misinformation has never been more crucial.\n\nFirst and foremost, critical thinking serves as our primary defense against the epidemic of misinformation that pervades social media and online platforms. Without the capacity to analyze sources, verify facts, and recognize logical fallacies, individuals become vulnerable to manipulation by those who exploit the information ecosystem for political or financial gain. The consequences of uncritical consumption range from personal financial scams to the erosion of democratic discourse.\n\nFurthermore, critical thinking enhances professional effectiveness across virtually every career path. Employers increasingly value employees who can approach complex problems methodically, challenge conventional wisdom constructively, and propose innovative solutions based on rigorous analysis rather than intuition alone. In an era of automation and artificial intelligence, these distinctly human cognitive abilities represent a sustainable competitive advantage.\n\nIn conclusion, critical thinking is not merely an academic exercise but a fundamental competency for navigating the complexities of modern life. Educational institutions, employers, and individuals all share responsibility for cultivating this vital skill."
+    },
+    "translation": {
+      "title": "Part IV Translation (30 minutes)",
+      "directions": "将以下段落翻译成英文",
+      "chinese": "在中国，父母总是竭力帮助孩子，甚至为孩子做重要决定，而不管孩子想要什么，因为他们相信这样做是为孩子好。结果，孩子的成长和教育往往屈从于父母的意愿。然而在美国，父母可能会尊重孩子的意见，并在决策时更注重他们的意见。中国父母十分重视教育或许值得称赞，但他们应该向美国父母学习在涉及教育时如何平衡父母与子女间的关系。",
+      "english": "In China, parents are always trying to help their children, even to make important decisions for them, regardless of what the children really want, because parents believe it is all for the benefit of their children. As a result, children's growth and education tend to give way to their parents' wishes. In America, however, parents tend to respect their children's opinions and pay more attention to their views when making decisions. Perhaps it is commendable that Chinese parents place great importance on education, but they should learn from American parents how to balance the relationship between parents and children when it comes to education."
+    },
+    "reading3": {
+      "title": "Part III Reading Comprehension — Section C: Careful Reading",
+      "passageTitle": "Passage One: Why Employees Don't Intervene in Unsafe Situations",
+      "passage": "It is irrefutable that employees know the difference between right and wrong. So why don't more employees intervene when they see someone exhibiting at-risk behavior in the workplace? There are a number of factors that influence whether people intervene.\n\nFirst, they need to be able to see a risky situation beginning to unfold. Second, the company's culture needs to make them feel safe to speak up. And third, they need to have the communication skills to say something effectively. This is not strictly a workplace problem; it's a growing problem off the job too. Every day people witness things on the street and choose to stand idly by. This is known as the bystander effect—the more people who witness an event, the less likely anyone in that group is to help the victim.\n\nThe psychology behind this is called diffusion of responsibility. Basically, the larger the crowd, the more people assume that someone else will take care of it—meaning no one effectively intervenes or acts in a moment of need. This crowd mentality is strong enough for people to evade their known responsibilities. But it's not only frontline workers who don't make safety interventions in the workplace. There are also instances where supervisors do not intervene either.\n\nWhen a group of employees sees unsafe behavior not being addressed at a leadership level, it creates the precedent that this is how these situations should be addressed, thus defining the safety culture for everyone. Despite the fact that workers are encouraged to intervene when they observe unsafe operations, this happens less than half of the time.\n\nFear is the ultimate factor in not intervening. There is a fear of penalty, a fear that they'll have to do more work if they intervene. Unsuccessful attempts in the past are another strong contributing factor—they tend to prefer to defer that action to someone else for all future situations. Supervisors play a critical role. They need a broad set of skills to not only identify and alleviate workplace hazards but also build a safety climate within their team that supports intervening and open communication.",
+      "questions": [
+        {
+          "q": "What is one factor contributing to failure of intervention in face of risky behavior?",
+          "opts": [
+            "A) Slack supervision style",
+            "B) Unfavorable workplace culture",
+            "C) Unforeseeable risk",
+            "D) Blocked communication"
+          ],
+          "ans": 1
+        },
+        {
+          "q": "What does \"diffusion of responsibility\" mean?",
+          "opts": [
+            "A) The more people around, the more they worry about safety",
+            "B) The more witnesses, the less likely anyone will intervene",
+            "C) People idling on the street need taking care of",
+            "D) Responsibility spreads evenly among coworkers"
+          ],
+          "ans": 1
+        },
+        {
+          "q": "What happens when unsafe behavior is not addressed by leaders?",
+          "opts": [
+            "A) No one will intervene when they see similar behaviors",
+            "B) Everyone sees it as the easiest solution",
+            "C) Workers take extra caution",
+            "D) Workers handle emergencies themselves"
+          ],
+          "ans": 0
+        },
+        {
+          "q": "What is the ultimate reason workers won't act when they see unsafe operations?",
+          "opts": [
+            "A) Preference of deferring action to others",
+            "B) Anticipation of leadership intervention",
+            "C) Fear of being isolated by coworkers",
+            "D) Fear of having to do more work"
+          ],
+          "ans": 3
+        },
+        {
+          "q": "What is critical to ensuring workplace safety?",
+          "opts": [
+            "A) Workers be trained to operate equipment properly",
+            "B) Workers exhibiting at-risk behavior be disciplined",
+            "C) Supervisors create a safety environment for timely intervention",
+            "D) Supervisors conduct effective communication with workers"
+          ],
+          "ans": 2
+        }
+      ]
+    }
+  },
+  "2023-12": {
+    "writing": {
+      "title": "Part I Writing (30 minutes)",
+      "directions": "Directions: For this part, you are allowed 30 minutes to write an essay on the topic \"The Role of Lifelong Learning in Career Development\". You should write at least 150 words but no more than 200 words.",
+      "sample": "Lifelong learning has emerged as a defining imperative of the modern professional landscape. The rapid pace of technological change means that skills acquired during formal education may become obsolete within a matter of years, if not months. Professionals who embrace continuous learning position themselves to adapt, thrive, and lead in an ever-evolving workplace.\n\nThe benefits of lifelong learning extend far beyond simple skill acquisition. It fosters intellectual curiosity and cognitive flexibility—qualities that enable individuals to approach problems from fresh perspectives and generate innovative solutions. Moreover, engaging in continuous education demonstrates initiative and dedication, traits that employers consistently rank among the most desirable in candidates for advancement.\n\nHowever, significant barriers to lifelong learning persist. Time constraints, financial limitations, and lack of access to quality educational resources prevent many individuals from fully engaging in continuous education. Addressing these inequities should be a priority for policymakers and business leaders alike.\n\nThe cultivation of a lifelong learning mindset requires both individual initiative and systemic support. Those who commit to being perpetual students of their craft not only future-proof their careers but also enrich their lives with the joy of intellectual discovery."
+    },
+    "translation": {
+      "title": "Part IV Translation (30 minutes)",
+      "directions": "将以下段落翻译成英文",
+      "chinese": "近年来，中国的城市化进程不断加快。越来越多的人从农村迁移到城市，寻求更好的就业机会和生活条件。城市化带来了经济的快速发展，但也引发了一系列问题，如交通拥堵、空气污染和住房紧张。为了应对这些挑战，许多城市正在大力发展公共交通，推广绿色建筑，并改善城市规划。",
+      "english": "In recent years, China's urbanization process has been accelerating continuously. More and more people have migrated from rural areas to cities in search of better employment opportunities and living conditions. Urbanization has brought rapid economic development, but it has also triggered a series of problems, such as traffic congestion, air pollution, and housing shortages. To address these challenges, many cities are vigorously developing public transportation, promoting green buildings, and improving urban planning."
+    },
+    "reading3": {
+      "title": "Part III Reading Comprehension — Section C: Careful Reading",
+      "passageTitle": "Passage One: Tax Cuts and Economic Growth",
+      "passage": "One of the great successes of the Republican Party in recent decades is the relentless propagation of a simple formula for economic growth: tax cuts. The formula doesn't work, but that has not affected its popularity. The reason is that there seems to be no alternative formula on offer.\n\nA more effective approach to economic growth would be to increase the compensation for labor. When workers earn more, they spend more, creating demand that drives business investment and expansion. This, in turn, generates more jobs and higher wages, creating a virtuous cycle of economic activity. The logic is straightforward: workers' income gains ultimately drive the national economy forward.\n\nTraditional economic thinking has long held that high wages must be built on a foundation of productivity increases. The argument goes that workers can only be paid more when they produce more. However, the experience of the past roughly fifty years tells a different story. While productivity has continued to rise steadily, wages have largely stagnated. The link between productivity growth and wage growth, once considered an iron law of economics, has been effectively severed.\n\nThis decoupling has profound implications for economic policy. If wages no longer automatically track productivity, then deliberate policy interventions may be necessary to ensure that workers share in the gains of economic growth. Tax policy, minimum wage legislation, and support for collective bargaining all have roles to play. The challenge is to design policies that promote both economic efficiency and equitable distribution of prosperity.",
+      "questions": [
+        {
+          "q": "Why does the tax cut formula remain popular despite being ineffective?",
+          "opts": [
+            "A) It has strong theoretical support",
+            "B) There seems to be no alternative on offer",
+            "C) It benefits most workers directly",
+            "D) Politicians have successfully promoted it"
+          ],
+          "ans": 1
+        },
+        {
+          "q": "What does the author believe is a more effective approach to growth?",
+          "opts": [
+            "A) Reducing corporate taxes further",
+            "B) Deregulating key industries",
+            "C) Increasing compensation for labor",
+            "D) Encouraging foreign investment"
+          ],
+          "ans": 2
+        },
+        {
+          "q": "According to traditional thinking, what is the basis for high wages?",
+          "opts": [
+            "A) Strong labor unions",
+            "B) Increases in productivity",
+            "C) Government intervention",
+            "D) Competitive markets"
+          ],
+          "ans": 1
+        },
+        {
+          "q": "What has happened to wages relative to productivity over the past 50 years?",
+          "opts": [
+            "A) Wages have kept pace with productivity growth",
+            "B) Wages have grown faster than productivity",
+            "C) Wages have largely stagnated despite productivity gains",
+            "D) Both have remained relatively flat"
+          ],
+          "ans": 2
+        },
+        {
+          "q": "What is the main challenge according to the passage?",
+          "opts": [
+            "A) How to reduce government spending on social programs",
+            "B) How to balance economic efficiency with equitable prosperity",
+            "C) How to increase international trade agreements",
+            "D) How to lower production costs for businesses"
+          ],
+          "ans": 1
+        }
+      ]
+    }
+  },
+  "2023-06": {
+    "writing": {
+      "title": "Part I Writing (30 minutes)",
+      "directions": "Directions: For this part, you are allowed 30 minutes to write an essay on the topic \"The Impact of Artificial Intelligence on Employment\". You should write at least 150 words but no more than 200 words.",
+      "sample": "Artificial intelligence is reshaping the employment landscape at an unprecedented pace, generating both excitement and anxiety across industries worldwide. While the transformative potential of AI is undeniable, its impact on jobs is complex and multifaceted, creating new opportunities even as it renders certain roles obsolete.\n\nOn one hand, AI automation threatens to displace workers in sectors ranging from manufacturing to professional services. Routine cognitive tasks and predictable physical labor are increasingly performed by machines with greater speed, accuracy, and cost-effectiveness than human workers. This displacement disproportionately affects workers with lower educational attainment and fewer resources for retraining.\n\nOn the other hand, AI creates entirely new categories of employment. The development, deployment, and maintenance of AI systems require highly skilled professionals—data scientists, machine learning engineers, and AI ethicists—roles that barely existed a decade ago. Moreover, AI augments human capabilities in many fields, enabling workers to focus on higher-value activities that require creativity, emotional intelligence, and complex judgment.\n\nThe key to navigating this transition lies in education and workforce development. Governments, educational institutions, and businesses must collaborate to provide lifelong learning opportunities that enable workers to adapt to the changing demands of an AI-augmented economy."
+    },
+    "translation": {
+      "title": "Part IV Translation (30 minutes)",
+      "directions": "将以下段落翻译成英文",
+      "chinese": "中国拥有悠久的历史和灿烂的文化。近年来，越来越多的外国人对中国传统文化产生了浓厚的兴趣。他们不仅学习汉语，还热衷于了解中国的书法、绘画、京剧和茶道。这种现象反映出中国文化在国际舞台上的影响力日益增强，也促进了中外文化的交流与互鉴。",
+      "english": "China boasts a long history and splendid culture. In recent years, an increasing number of foreigners have developed a strong interest in traditional Chinese culture. They not only learn the Chinese language but are also keen to understand Chinese calligraphy, painting, Peking opera, and tea ceremony. This phenomenon reflects the growing influence of Chinese culture on the international stage and promotes cultural exchange and mutual learning between China and other countries."
+    },
+    "reading3": {
+      "title": "Part III Reading Comprehension — Section C: Careful Reading",
+      "passageTitle": "Passage One: Chimpanzees and Human Imitation",
+      "passage": "Chimpanzees, human beings' closest animal relatives, share up to 98% of our genes. Their human-like behaviors have long fascinated scientists and the general public alike. Among their most remarkable cognitive abilities is their capacity for imitation—a skill that plays a crucial role in how they learn from and interact with one another.\n\nWhen faced with novel challenges, chimpanzees often respond by carefully observing and replicating the actions of other individuals who have successfully solved similar problems. This social learning strategy enables them to acquire complex skills—such as using tools to extract termites from mounds or cracking nuts with stones—without the need for trial-and-error experimentation. In this sense, imitation serves as a powerful shortcut to adaptive behavior, allowing knowledge to spread efficiently through social groups.\n\nHowever, recent comparative studies have revealed a surprising difference between chimpanzee and human imitation. When researchers demonstrated a series of actions to both chimpanzees and young children, they found that while chimpanzees tended to imitate only the actions that were causally necessary to achieve a goal, children would often imitate every single action—even those that were clearly unnecessary. This phenomenon, known as \"over-imitation,\" appears to be uniquely human.\n\nScientists believe that over-imitation may be rooted in the way humans learn complex technologies. Unlike the relatively straightforward tool use observed in chimpanzees, human technologies—from cooking recipes to smartphone operation—often involve steps whose purpose is not immediately obvious. Faithfully copying all observed actions, even seemingly irrelevant ones, may have been crucial for transmitting such complex cultural knowledge across generations. In this view, the human tendency to imitate blindly is not a cognitive flaw but rather a sophisticated adaptation for cultural learning.",
+      "questions": [
+        {
+          "q": "What remarkable cognitive ability do chimpanzees possess?",
+          "opts": [
+            "A) Mathematical reasoning",
+            "B) Language processing",
+            "C) The capacity for imitation",
+            "D) Abstract thinking"
+          ],
+          "ans": 2
+        },
+        {
+          "q": "How do chimpanzees respond when faced with novel challenges?",
+          "opts": [
+            "A) By experimenting randomly until they succeed",
+            "B) By avoiding the challenge entirely",
+            "C) By asking humans for help",
+            "D) By observing and replicating actions of successful individuals"
+          ],
+          "ans": 3
+        },
+        {
+          "q": "What is \"over-imitation\" according to the passage?",
+          "opts": [
+            "A) Children imitating every action including unnecessary ones",
+            "B) Chimpanzees imitating humans too closely",
+            "C) Adults over-analyzing children's behavior",
+            "D) Scientists over-interpreting experimental results"
+          ],
+          "ans": 0
+        },
+        {
+          "q": "Why might over-imitation have evolved in humans?",
+          "opts": [
+            "A) It helps children learn socially appropriate behavior",
+            "B) It was crucial for transmitting complex cultural knowledge",
+            "C) It makes humans appear more intelligent to others",
+            "D) It helps children bond with their parents"
+          ],
+          "ans": 1
+        },
+        {
+          "q": "What is the author's conclusion about blind imitation in humans?",
+          "opts": [
+            "A) It is a cognitive flaw that should be corrected",
+            "B) It is a sophisticated adaptation for cultural learning",
+            "C) It is less efficient than chimpanzee learning strategies",
+            "D) It has no evolutionary advantage whatsoever"
+          ],
+          "ans": 1
+        }
+      ]
+    }
+  },
+  "2022-12": {
+    "writing": {
+      "title": "Part I Writing (30 minutes)",
+      "directions": "Directions: For this part, you are allowed 30 minutes to write an essay on the topic \"The Role of Teamwork in Modern Workplaces\". You should write at least 150 words but no more than 200 words.",
+      "sample": "In today's increasingly interconnected and complex business environment, teamwork has evolved from a desirable soft skill into a fundamental organizational necessity. The challenges facing modern enterprises—from developing innovative products to navigating global supply chains—are simply too multifaceted for any individual to address alone.\n\nEffective teamwork brings together diverse perspectives, complementary skills, and collective intelligence. When individuals with different backgrounds, expertise, and problem-solving approaches collaborate, they generate solutions that are more creative and robust than what any single person could produce independently. This synergy is particularly valuable in fields such as technology development, scientific research, and creative industries, where breakthrough innovations often emerge at the intersection of different disciplines.\n\nHowever, successful teamwork does not happen automatically. It requires intentional cultivation of trust, open communication, and mutual respect among team members. Organizations must invest in creating environments where psychological safety enables people to voice dissenting opinions without fear of retribution, and where credit is shared generously rather than hoarded competitively. The most successful teams balance individual accountability with collective responsibility, ensuring that each member feels both empowered and accountable."
+    },
+    "translation": {
+      "title": "Part IV Translation (30 minutes)",
+      "directions": "将以下段落翻译成英文",
+      "chinese": "太极拳是一种中国传统武术，已有数百年历史。它动作缓慢柔和，注重呼吸调节，既能强身健体，又能修身养性。如今，太极拳已经传播到世界各地，不仅受到老年人的喜爱，也吸引了越来越多的年轻人参与。许多人每天早晨在公园里练习太极拳，这项运动已成为他们生活中不可或缺的一部分。",
+      "english": "Tai Chi is a traditional Chinese martial art with a history of several hundred years. Its movements are slow and gentle, emphasizing breath regulation, and it can both strengthen the body and cultivate the mind. Today, Tai Chi has spread around the world and is not only loved by the elderly but also attracts an increasing number of young people to participate. Many people practice Tai Chi in parks every morning, and this exercise has become an indispensable part of their lives."
+    },
+    "reading3": {
+      "title": "Part III Reading Comprehension — Section C: Careful Reading",
+      "passageTitle": "Passage One: The Bystander Effect in the Digital Age",
+      "passage": "The bystander effect is a well-documented social psychological phenomenon in which individuals are less likely to offer help to a victim when other people are present. First demonstrated in laboratory experiments in the late 1960s, this counterintuitive finding has since been replicated across numerous contexts—from emergency situations to everyday acts of kindness.\n\nThe classic explanation for the bystander effect involves two key mechanisms: diffusion of responsibility and social influence. Diffusion of responsibility occurs when each bystander assumes that someone else will take action, resulting in a collective failure to intervene. Social influence operates when bystanders look to others for cues about how to behave; if no one else appears concerned, each individual concludes that the situation must not be serious.\n\nHowever, the digital age has complicated our understanding of the bystander effect. On social media platforms, the presence of millions of potential \"bystanders\" creates an extreme version of diffusion of responsibility—when a crisis unfolds online, individuals may assume that someone else, somewhere, will respond. Yet paradoxically, digital platforms can also mobilize collective action with unprecedented speed. Viral campaigns for social causes, crowdfunding for medical emergencies, and coordinated disaster relief efforts all demonstrate that digital crowds can sometimes overcome the bystander effect and act as powerful forces for good.\n\nThe key factor differentiating digital apathy from digital mobilization appears to be personal connection. When individuals feel a sense of identification with a victim or cause—whether through shared identity, geographic proximity, or emotional resonance—they are far more likely to translate online awareness into meaningful action. Understanding these dynamics is crucial for designing digital platforms and social campaigns that encourage prosocial behavior rather than passive spectatorship.",
+      "questions": [
+        {
+          "q": "What is the bystander effect?",
+          "opts": [
+            "A) People help more when others are present",
+            "B) People are less likely to help when others are present",
+            "C) Bystanders always intervene in emergencies",
+            "D) Crowds increase individual responsibility"
+          ],
+          "ans": 1
+        },
+        {
+          "q": "What are the two key mechanisms behind the bystander effect?",
+          "opts": [
+            "A) Fear and anger",
+            "B) Diffusion of responsibility and social influence",
+            "C) Indifference and hostility",
+            "D) Conformity and rebellion"
+          ],
+          "ans": 1
+        },
+        {
+          "q": "How does the digital age complicate the bystander effect?",
+          "opts": [
+            "A) It makes the effect completely disappear",
+            "B) Millions of potential bystanders create extreme diffusion of responsibility",
+            "C) People are more likely to help online than offline",
+            "D) Social media has no effect on the phenomenon"
+          ],
+          "ans": 1
+        },
+        {
+          "q": "What factor differentiates digital apathy from digital mobilization?",
+          "opts": [
+            "A) The number of people involved",
+            "B) The speed of internet connection",
+            "C) Personal connection to the victim or cause",
+            "D) The time of day when the event occurs"
+          ],
+          "ans": 2
+        },
+        {
+          "q": "What is the main purpose of this passage?",
+          "opts": [
+            "A) To argue that social media is harmful to society",
+            "B) To describe a classic psychological phenomenon and its digital-age implications",
+            "C) To provide a historical overview of psychology research",
+            "D) To criticize people who don't help others online"
+          ],
+          "ans": 1
+        }
+      ]
+    }
+  }
+};
+// 六级写作替换
+const cet6Writing = `In an era marked by unprecedented technological advancement and social transformation, the concept of lifelong learning has evolved from a personal aspiration into a professional necessity. The rapid pace of change in virtually every industry means that skills acquired during formal education may become obsolete within a matter of years, if not months.
+
+The digital revolution has fundamentally altered the employment landscape. Automation and artificial intelligence are reshaping traditional job roles, creating demand for new competencies while rendering others redundant. In this context, the ability to continuously acquire new knowledge and adapt to changing circumstances has become perhaps the most valuable skill an individual can possess.
+
+Lifelong learning extends beyond mere professional development. It encompasses the pursuit of knowledge for personal enrichment, intellectual curiosity, and social engagement. Individuals who embrace lifelong learning tend to report higher levels of life satisfaction, maintain sharper cognitive function as they age, and demonstrate greater resilience in the face of adversity.
+
+However, significant barriers to lifelong learning persist. Time constraints, financial limitations, and lack of access to quality educational resources prevent many individuals from fully engaging in continuous education. Addressing these inequities should be a priority for policymakers and educational institutions alike.
+
+Ultimately, the cultivation of a lifelong learning mindset requires both individual initiative and systemic support. As the ancient Chinese philosopher Confucius observed, "Education breeds confidence. Confidence breeds hope. Hope breeds peace." In our complex and rapidly changing world, these words ring truer than ever.`;
+
+// CET6数据已直接注入真实真题
+
+// ======================== 状态管理 ========================
+let state = {
+  examType: 'cet4',
+  year: '2024-12',
+  section: 'reading3',
+  showAnswers: false
+};
+
+// ======================== 翻译+高亮+句子翻译 ========================
+const DICT_CACHE = {};
+const tooltip = document.getElementById('wordTooltip');
+const ttWord = document.getElementById('ttWord');
+const ttPhonetic = document.getElementById('ttPhonetic');
+const ttMeaning = document.getElementById('ttMeaning');
+const sentencePopup = document.getElementById('sentencePopup');
+const spOriginal = document.getElementById('spOriginal');
+const spTranslated = document.getElementById('spTranslated');
+const highlightPanel = document.getElementById('highlightPanel');
+let highlightedWords = JSON.parse(localStorage.getItem('cet_highlights')||'{}');
+let tooltipTimer = null, lastSelectedText = '';
+
+// 内置词典
+const LOCAL_DICT = {
+  'artificial':'adj. 人工的；人造的；虚假的',
+  'intelligence':'n. 智力；情报；理解力',
+  'unprecedented':'adj. 前所未有的；空前的；史无前例的',
+  'landscape':'n. 风景；景观；形势 v. 美化',
+  'personalized':'adj. 个性化的；个人化的',
+  'platforms':'n. 平台；讲台；站台',
+  'technologies':'n. 技术；科技',
+  'reshaping':'v. 重塑；改造；重新塑造',
+  'acquire':'v. 获得；获取；习得',
+  'deliver':'v. 递送；发表；交付',
+  'instruction':'n. 指令；教学；指示',
+  'adaptive':'adj. 适应的；有适应能力的',
+  'feedback':'n. 反馈；回馈意见',
+  'assistance':'n. 帮助；援助；协助',
+  'administrative':'adj. 行政的；管理的',
+  'automate':'v. 自动化；使自动运行',
+  'meaningful':'adj. 有意义的；意味深长的',
+  'interactions':'n. 互动；相互作用；交流',
+  'integration':'n. 融合；整合；一体化',
+  'concerns':'n. 担忧；关注 v. 涉及',
+  'diminish':'v. 减少；削弱；降低',
+  'creativity':'n. 创造力；创造性',
+  'privacy':'n. 隐私；私密',
+  'divide':'n. 分歧；鸿沟 v. 分开',
+  'tremendous':'adj. 巨大的；极大的',
+  'enhance':'v. 增强；提高；改善',
+  'implementation':'n. 实施；执行；落实',
+  'irreplaceable':'adj. 不可替代的；独一无二的',
+  'innovations':'n. 创新；革新',
+  'wondered':'v. 想知道；好奇；疑惑',
+  'psychology':'n. 心理学；心理',
+  'consumer':'n. 消费者；顾客',
+  'fascinated':'v. 着迷；迷住',
+  'researchers':'n. 研究人员；调查者',
+  'marketers':'n. 市场营销人员',
+  'behavioral':'adj. 行为的；行为科学的',
+  'economics':'n. 经济学',
+  'revealed':'v. 揭示；透露；展现',
+  'rational':'adj. 理性的；合理的',
+  'cognitive':'adj. 认知的；认识的',
+  'biases':'n. 偏见；偏差；倾向',
+  'emotional':'adj. 情感的；情绪的',
+  'triggers':'n. 触发因素 v. 触发',
+  'environmental':'adj. 环境的；周围的',
+  'cues':'n. 线索；提示；暗示',
+  'anchoring':'n. 锚定；固定',
+  'exploited':'v. 利用；剥削；开发',
+  'tendency':'n. 倾向；趋势',
+  'prominently':'adv. 突出地；显著地',
+  'alternatives':'n. 替代品；选择',
+  'phenomenon':'n. 现象；奇迹',
+  'assume':'v. 假设；承担；认为',
+  'influential':'adj. 有影响力的；重要的',
+  'commerce':'n. 商业；贸易',
+  'purchased':'v. 购买；采购',
+  'evidence':'n. 证据；证明',
+  'bypassing':'v. 绕过；避开',
+  'evaluation':'n. 评估；评价',
+  'scarcity':'n. 稀缺；缺乏；不足',
+  'principle':'n. 原则；原理；法则',
+  'crucial':'adj. 关键的；至关重要的',
+  'limited':'adj. 有限的；受限的',
+  'effectiveness':'n. 有效性；效果',
+  'abbreviated':'adj. 缩写的；简短的',
+  'triggers':'v. 触发；引起',
+  'primal':'adj. 原始的；最初的',
+  'override':'v. 推翻；覆盖；优先于',
+  'deliberation':'n. 深思熟虑；审议',
+  'transparency':'n. 透明度；透明性',
+  'authenticity':'n. 真实性；可靠性',
+  'saturated':'adj. 饱和的；充满的',
+  'genuine':'adj. 真正的；真诚的',
+  'exploitation':'n. 剥削；利用；开发',
+  'mechanisms':'n. 机制；机理',
+  'empowers':'v. 赋权；使有能力',
+  'preferences':'n. 偏好；偏爱',
+  'artificially':'adv. 人为地；人工地',
+  'consumption':'n. 消费；消耗',
+  'satisfaction':'n. 满意；满足',
+  'fundamentally':'adv. 根本上；基本上',
+  'altered':'v. 改变；修改',
+  'unprecedented':'adj. 史无前例的',
+  'connectivity':'n. 连通性；连接',
+  'facilitation':'n. 促进；便利',
+  'boundaries':'n. 边界；界限',
+  'approximately':'adv. 大约；近似地',
+  'proliferation':'n. 激增；扩散',
+  'implications':'n. 影响；含义',
+  'adolescents':'n. 青少年',
+  'anxiety':'n. 焦虑；忧虑',
+  'competence':'n. 能力；胜任',
+  'absence':'n. 缺席；缺乏',
+  'non-verbal':'adj. 非语言的',
+  'empathy':'n. 同理心；共情',
+  'asynchronous':'adj. 异步的；不同时的',
+  'collaboration':'n. 合作；协作',
+  'cohesion':'n. 凝聚力；团结',
+  'immersive':'adj. 沉浸式的',
+  'virtual':'adj. 虚拟的；实质的',
+  'augmented':'adj. 增强的；扩充的',
+  'simulating':'v. 模拟；仿真',
+  'martial':'adj. 军事的；武术的',
+  'originating':'v. 起源于；来自',
+  'self-defense':'n. 自卫；正当防卫',
+  'cardiovascular':'adj. 心血管的',
+  'lifelong':'adj. 终身的；一生的',
+  'aspiration':'n. 志向；抱负；渴望',
+  'necessity':'n. 必要性；必需品',
+  'obsolete':'adj. 过时的；废弃的',
+  'revolution':'n. 革命；变革',
+  'automation':'n. 自动化',
+  'redundant':'adj. 多余的；冗余的',
+  'competencies':'n. 能力；技能',
+  'enrichment':'n. 丰富；充实',
+  'curiosity':'n. 好奇心；求知欲',
+  'resilience':'n. 韧性；恢复力',
+  'adversity':'n. 逆境；困难',
+  'barriers':'n. 障碍；壁垒',
+  'constraints':'n. 限制；约束',
+  'inequities':'n. 不公平；不平等',
+  'policymakers':'n. 政策制定者',
+  'cultivation':'n. 培养；耕作',
+  'initiative':'n. 主动性；倡议',
+  'philosopher':'n. 哲学家',
+  'breeds':'v. 产生；孕育；繁殖',
+
+    'comprehensive':'adj. 全面的；综合的',
+    'significant':'adj. 显著的；重要的',
+    'strategy':'n. 策略；战略',
+    'perspective':'n. 视角；观点',
+    'contemporary':'adj. 当代的',
+    'demonstrate':'v. 展示；证明',
+    'potential':'n. 潜力 adj. 潜在的',
+    'despite':'prep. 尽管',
+    'maintain':'v. 维持；保持',
+    'critical':'adj. 关键的；批评的',
+    'essential':'adj. 必要的；基本的',
+    'phenomenon':'n. 现象',
+    'accumulate':'v. 积累',
+    'transform':'v. 转变；改造',
+    'conventional':'adj. 传统的',
+    'sufficiently':'adv. 足够地',
+    'considerable':'adj. 相当大的',
+    'psychological':'adj. 心理的',
+    'entrepreneur':'n. 企业家',
+    'recommendation':'n. 推荐；建议',
+    'approximately':'adv. 大约',
+    'particularly':'adv. 特别地',
+    'circumstances':'n. 情况；环境',
+    'extraordinary':'adj. 非凡的；惊人的',
+    'sophisticated':'adj. 复杂的；精密的',
+    'substantial':'adj. 大量的；实质的',
+    'intervention':'n. 干预；介入',
+    'investigation':'n. 调查；研究',
+    'consciousness':'n. 意识；知觉',
+    'unprecedented':'adj. 史无前例的',
+    'consequently':'adv. 因此；结果',
+    'predominantly':'adv. 主要地',
+    'fundamentally':'adv. 根本上',
+    'nevertheless':'adv. 尽管如此',
+    'component':'n. 组成部分；成分',
+    'consequence':'n. 后果；结果',
+    'capacity':'n. 能力；容量',
+    'emphasis':'n. 重点；强调',
+    'enormous':'adj. 巨大的；庞大的',
+    'domestic':'adj. 国内的；家庭的',
+    'distinction':'n. 区别；差别',
+    'academic':'adj. 学术的；学院的',
+
+  'abandon':'放弃；抛弃',
+  'absorb':'吸收；吸引',
+  'abstract':'抽象的；摘要',
+  'abuse':'滥用；虐待',
+  'accelerate':'加速',
+  'access':'通道；访问',
+  'accommodate':'容纳；适应',
+  'accompany':'陪伴',
+  'accomplish':'完成',
+  'account':'账户；解释',
+  'accurate':'准确的',
+  'acknowledge':'承认；感谢',
+  'adapt':'适应',
+  'adequate':'充足的',
+  'adjust':'调整',
+  'administration':'管理；行政',
+  'adopt':'采用；收养',
+  'advocate':'提倡',
+  'affect':'影响',
+  'aggressive':'进取的；好斗的',
+  'allocate':'分配',
+  'alternative':'替代品；可选的',
+  'ambiguous':'模糊的',
+  'ambitious':'有雄心的',
+  'annual':'年度的',
+  'apparent':'明显的',
+  'appeal':'呼吁；吸引',
+  'appliance':'电器',
+  'appreciate':'欣赏；感激',
+  'arbitrary':'任意的',
+  'arise':'出现；产生',
+  'aspect':'方面',
+  'assemble':'集合；组装',
+  'assess':'评估',
+  'assign':'分配',
+  'associate':'联系',
+  'assume':'假设',
+  'attain':'达到',
+  'attribute':'归因于',
+  'authority':'权威；当局',
+  'available':'可用的',
+  'barrier':'障碍',
+  'candidate':'候选人',
+  'capable':'有能力的',
+  'category':'类别',
+  'cease':'停止',
+  'challenge':'挑战',
+  'characteristic':'特征',
+  'claim':'声称；索赔',
+  'classify':'分类',
+  'collapse':'崩溃',
+  'combat':'战斗；对抗',
+  'commission':'委员会；佣金',
+  'commit':'犯（罪）；承诺',
+  'communicate':'交流',
+  'community':'社区',
+  'comparable':'可比较的',
+  'compatible':'兼容的',
+  'compel':'强迫',
+  'compensate':'补偿',
+  'competent':'有能力的',
+  'competitive':'有竞争力的',
+  'complaint':'投诉',
+  'complicate':'使复杂化',
+  'compose':'组成；创作',
+  'comprehend':'理解',
+  'comprise':'包含',
+  'concentrate':'集中',
+  'concept':'概念',
+  'conclude':'下结论',
+  'conduct':'进行',
+  'conference':'会议',
+  'confine':'限制',
+  'confirm':'确认',
+  'conflict':'冲突',
+  'confront':'面对',
+  'conscience':'良心',
+  'conscious':'有意识的',
+  'conservative':'保守的',
+  'consistent':'一致的',
+  'constant':'不断的',
+  'constitute':'构成',
+  'construct':'建造',
+  'consume':'消费',
+  'contact':'联系',
+  'contrary':'相反的',
+  'controversial':'有争议的',
+  'convenience':'便利',
+  'convey':'传达',
+  'convince':'说服',
+  'coordinate':'协调',
+  'corporation':'公司',
+  'correspond':'对应；通信',
+  'counsel':'劝告；法律顾问',
+  'crisis':'危机',
+  'criterion':'标准',
+  'cultivate':'培养',
+  'debate':'辩论',
+  'decay':'腐朽；衰退',
+  'decline':'下降；婉拒',
+  'defect':'缺点',
+  'deficiency':'缺乏',
+  'define':'定义',
+  'deliberate':'故意的',
+  'delicate':'微妙的；精致的',
+  'democracy':'民主',
+  'deny':'否认',
+  'deposit':'存款',
+  'depress':'使沮丧',
+  'derive':'源自；获得',
+  'deserve':'值得',
+  'desirable':'可取的',
+  'desperate':'绝望的',
+  'destination':'目的地',
+  'detect':'发现；检测',
+  'deteriorate':'恶化',
+  'devote':'致力于',
+  'dimension':'维度；尺寸',
+  'diplomatic':'外交的',
+  'discipline':'纪律',
+  'discrimination':'歧视',
+  'disorder':'混乱',
+  'dispute':'争论',
+  'distinct':'不同的',
+  'distinguish':'区分',
+  'distribute':'分配',
+  'diverse':'多样的',
+  'dominant':'占优势的',
+  'draft':'草稿',
+  'dramatic':'戏剧性的；巨大的',
+  'durable':'耐用的',
+  'dynamic':'有活力的',
+  'economical':'节约的',
+  'edition':'版本',
+  'efficient':'高效的',
+  'elaborate':'精心的',
+  'eliminate':'消除；淘汰',
+  'embrace':'拥抱；接受',
+  'emerge':'出现',
+  'emission':'排放',
+  'employ':'雇用；使用',
+  'encompass':'包含',
+  'encounter':'遭遇',
+  'enforce':'执行',
+  'engage':'吸引；从事',
+  'enormous':'巨大的',
+  'ensure':'确保',
+  'enterprise':'企业',
+  'enthusiasm':'热情',
+  'entitle':'给...权利',
+  'equivalent':'等价的',
+  'establish':'建立',
+  'estate':'财产',
+  'estimate':'估计',
+  'evaluate':'评价',
+  'evolve':'进化；演变',
+  'exaggerate':'夸张',
+  'exceed':'超过',
+  'exception':'例外',
+  'excess':'过量',
+  'exclude':'排除',
+  'execute':'执行',
+  'exert':'施加',
+  'exhibit':'展示',
+  'expand':'扩展',
+  'expense':'花费',
+  'explicit':'明确的',
+  'exploit':'开发；剥削',
+  'expose':'暴露',
+  'external':'外部的',
+  'extract':'提取；摘录',
+  'facilitate':'促进',
+  'faculty':'能力；全体教员',
+  'faith':'信仰',
+  'fatal':'致命的',
+  'feasible':'可行的',
+  'feature':'特征',
+  'federal':'联邦的',
+  'fiction':'小说',
+  'finance':'金融',
+  'flexible':'灵活的',
+  'flourish':'繁荣',
+  'fluctuate':'波动',
+  'forbid':'禁止',
+  'forecast':'预测',
+  'formula':'公式',
+  'foundation':'基础',
+  'fraction':'小部分',
+  'framework':'框架',
+  'frequency':'频率',
+  'friction':'摩擦',
+  'fulfill':'实现；满足',
+  'generate':'产生',
+  'generous':'慷慨的',
+  'global':'全球的',
+  'gradual':'逐渐的',
+  'grant':'授予；拨款',
+  'guarantee':'保证',
+  'guideline':'指导方针',
+  'hardship':'困难',
+  'harmony':'和谐',
+  'highlight':'强调',
+  'hospitality':'好客',
+  'hostile':'敌对的',
+  'household':'家庭',
+  'identical':'相同的',
+  'identify':'识别',
+  'ignorance':'无知',
+  'illustrate':'说明',
+  'imaginary':'想象的',
+  'immense':'巨大的',
+  'immigrant':'移民',
+  'impact':'影响',
+  'implement':'实施',
+  'implication':'含义；暗示',
+  'impose':'强加',
+  'incentive':'激励',
+  'incident':'事件',
+  'incorporate':'合并',
+  'index':'索引；指数',
+  'indicate':'表明',
+  'indispensable':'不可缺少的',
+  'induce':'引起',
+  'inferior':'低等的',
+  'inflation':'通货膨胀',
+  'ingredient':'成分',
+  'inherent':'固有的',
+  'initiative':'主动性',
+  'innovation':'创新',
+  'insight':'洞察力',
+  'inspection':'检查',
+  'install':'安装',
+  'instinct':'本能',
+  'integrate':'整合',
+  'integrity':'正直；完整',
+  'intellectual':'智力的',
+  'intense':'强烈的',
+  'intensive':'密集的',
+  'interact':'互动',
+  'interfere':'干涉',
+  'interior':'内部',
+  'internal':'内部的',
+  'interpret':'解释；口译',
+  'interval':'间隔',
+  'intimate':'亲密的',
+  'invade':'入侵',
+  'investigate':'调查',
+  'invisible':'无形的',
+  'involve':'涉及',
+  'isolate':'隔离',
+  'justify':'证明...合理',
+  'keen':'热衷的；敏锐的',
+  'lag':'滞后',
+  'launch':'发射；发起',
+  'legislation':'立法',
+  'liberal':'自由的',
+  'likelihood':'可能性',
+  'linger':'徘徊',
+  'literacy':'素养',
+  'logic':'逻辑',
+  'loyalty':'忠诚',
+  'magnificent':'壮丽的',
+  'manifest':'表明',
+  'manipulate':'操纵',
+  'manufacture':'制造',
+  'mature':'成熟的',
+  'maximum':'最大的',
+  'medium':'媒介',
+  'mental':'心理的',
+  'migrate':'迁移',
+  'military':'军事的',
+  'minimum':'最小的',
+  'minority':'少数',
+  'mission':'使命',
+  'mobile':'移动的',
+  'moderate':'适度的',
+  'modify':'修改',
+  'monitor':'监控',
+  'motivate':'激励',
+  'mutual':'相互的',
+  'negative':'消极的',
+  'neglect':'忽视',
+  'negotiate':'谈判',
+  'neutral':'中立的',
+  'notion':'概念；想法',
+  'nourish':'滋养',
+  'objective':'目标；客观的',
+  'obligation':'义务',
+  'obstacle':'障碍',
+  'obtain':'获得',
+  'occupation':'职业',
+  'offend':'冒犯',
+  'opponent':'对手',
+  'opportunity':'机会',
+  'oppose':'反对',
+  'optimistic':'乐观的',
+  'option':'选择',
+  'organic':'有机的',
+  'orient':'定方向',
+  'original':'独创的',
+  'outcome':'结果',
+  'overcome':'克服',
+  'overlook':'俯瞰；忽视',
+  'overseas':'海外的',
+  'overwhelm':'压倒',
+  'panel':'专家组',
+  'passion':'激情',
+  'passive':'被动的',
+  'peculiar':'奇特的',
+  'perceive':'察觉',
+  'permanent':'永久的',
+  'permit':'允许',
+  'persist':'坚持',
+  'personality':'个性',
+  'pessimistic':'悲观的',
+  'phase':'阶段',
+  'philosophy':'哲学',
+  'policy':'政策',
+  'portion':'部分',
+  'portray':'描绘',
+  'pose':'造成；摆姿势',
+  'positive':'积极的',
+  'possess':'拥有',
+  'poverty':'贫穷',
+  'precaution':'预防',
+  'precede':'先于',
+  'precise':'精确的',
+  'predict':'预测',
+  'prejudice':'偏见',
+  'prescribe':'规定；开处方',
+  'preserve':'保存',
+  'prevail':'盛行',
+  'previous':'先前的',
+  'primary':'主要的',
+  'principal':'主要的；校长',
+  'priority':'优先事项',
+  'procedure':'程序',
+  'proceed':'继续',
+  'productive':'高产的',
+  'proficiency':'熟练',
+  'profit':'利润',
+  'profound':'深刻的',
+  'prohibit':'禁止',
+  'prominent':'突出的',
+  'promote':'促进；晋升',
+  'prospect':'前景',
+  'prosperity':'繁荣',
+  'protest':'抗议',
+  'provision':'规定',
+  'pursue':'追求',
+  'qualification':'资格',
+  'radical':'激进的',
+  'random':'随机的',
+  'range':'范围',
+  'rational':'理性的',
+  'readily':'容易地',
+  'recession':'衰退',
+  'reckon':'认为',
+  'recognize':'认识',
+  'reconcile':'调和',
+  'recover':'恢复',
+  'regulate':'调节',
+  'reinforce':'加强',
+  'reject':'拒绝',
+  'release':'释放；发布',
+  'relevant':'相关的',
+  'relieve':'缓解',
+  'rely':'依赖',
+  'remedy':'补救措施',
+  'render':'提供',
+  'reputation':'名声',
+  'resemble':'像',
+  'reserve':'保留；预订',
+  'resign':'辞职',
+  'resist':'抵抗',
+  'resolve':'解决',
+  'resort':'诉诸；度假地',
+  'resource':'资源',
+  'respond':'回应',
+  'restore':'恢复',
+  'restrain':'抑制',
+  'restrict':'限制',
+  'retain':'保持',
+  'reveal':'揭示',
+  'revenue':'收入',
+  'reverse':'颠倒；相反',
+  'revolution':'革命',
+  'rigid':'严格的',
+  'rival':'竞争对手',
+  'routine':'常规',
+  'sacrifice':'牺牲',
+  'scale':'规模',
+  'scatter':'分散',
+  'schedule':'时间表',
+  'scheme':'计划',
+  'scope':'范围',
+  'sector':'部门',
+  'secure':'安全的；获得',
+  'segment':'部分',
+  'seminar':'研讨会',
+  'senior':'年长的；大四学生',
+  'sensitive':'敏感的',
+  'sequence':'顺序',
+  'session':'会议',
+  'settlement':'解决',
+  'severe':'严重的',
+  'shelter':'避难所',
+  'shield':'保护',
+  'shift':'转移；轮班',
+  'shrink':'收缩',
+  'signal':'信号',
+  'significance':'意义',
+  'simultaneous':'同时的',
+  'sketch':'素描',
+  'slight':'轻微的',
+  'sole':'唯一的',
+  'somewhat':'有点',
+  'source':'来源；源头',
+  'span':'跨度；跨越',
+  'specify':'指定',
+  'sphere':'领域',
+  'sponsor':'赞助商',
+  'stability':'稳定性',
+  'statistics':'统计学',
+  'status':'地位；状态',
+  'stem':'起源于',
+  'stimulate':'刺激',
+  'stress':'压力；强调',
+  'stretch':'伸展',
+  'structure':'结构',
+  'subjective':'主观的',
+  'submit':'提交',
+  'subsequent':'随后的',
+  'substitute':'替代',
+  'sufficient':'足够的',
+  'summit':'峰会',
+  'superficial':'表面的',
+  'superior':'优越的',
+  'supplement':'补充',
+  'suppress':'压制',
+  'supreme':'最高的',
+  'surge':'激增',
+  'surpass':'超过',
+  'surplus':'过剩',
+  'survey':'调查',
+  'survive':'幸存',
+  'suspect':'怀疑',
+  'suspend':'暂停',
+  'sustain':'维持',
+  'symbol':'符号',
+  'sympathy':'同情',
+  'symptom':'症状',
+  'synthetic':'合成的',
+  'tackle':'处理',
+  'target':'目标',
+  'temper':'脾气',
+  'temporary':'临时的',
+  'tendency':'趋势',
+  'terminal':'终端；航站楼',
+  'territory':'领土',
+  'theme':'主题',
+  'therapy':'治疗',
+  'thereby':'因此',
+  'thorough':'彻底的',
+  'thrive':'繁荣',
+  'tolerance':'宽容',
+  'trait':'特征',
+  'transaction':'交易',
+  'transfer':'转移',
+  'transition':'过渡',
+  'transmit':'传输',
+  'transparent':'透明的',
+  'tremendous':'巨大的',
+  'trend':'趋势',
+  'trigger':'触发',
+  'triumph':'胜利',
+  'tuition':'学费',
+  'undergo':'经历',
+  'undermine':'破坏',
+  'undertake':'承担',
+  'undoubtedly':'无疑地',
+  'unemployment':'失业',
+  'unique':'独特的',
+  'universal':'普遍的',
+  'update':'更新',
+  'upgrade':'升级',
+  'urban':'城市的',
+  'urge':'敦促',
+  'utilize':'利用',
+  'valid':'有效的',
+  'vanish':'消失',
+  'variable':'变量',
+  'vast':'广阔的',
+  'venture':'冒险事业',
+  'verify':'核实',
+  'version':'版本',
+  'vessel':'船；容器',
+  'veteran':'退伍军人',
+  'via':'通过',
+  'violate':'违反',
+  'virtue':'美德',
+  'visible':'可见的',
+  'vision':'视力；愿景',
+  'visual':'视觉的',
+  'vital':'至关重要的',
+  'vivid':'生动的',
+  'volume':'音量；体积',
+  'voluntary':'自愿的',
+  'vulnerable':'脆弱的',
+  'welfare':'福利',
+  'whereas':'然而',
+  'widespread':'广泛的',
+  'witness':'证人；目击',
+  'worthwhile':'值得的',
+  'yield':'产生；屈服',
+};
+
+async function translateWord(word) {
+  const clean = word.toLowerCase().replace(/[^a-z-]/g, '');
+  if (!clean || clean.length < 2) return null;
+
+  if (LOCAL_DICT[clean]) return {word: clean, meaning: LOCAL_DICT[clean]};
+  if (DICT_CACHE[clean]) return DICT_CACHE[clean];
+
+  const result = {word: clean, meaning: '翻译中...'};
+  DICT_CACHE[clean] = result;
+
+  // 尝试1: Google翻译
+  try {
+    const resp = await fetch(
+      `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=zh-CN&dt=t&q=${encodeURIComponent(clean)}`
+    );
+    const data = await resp.json();
+    const zh = (data[0]||[]).map(x=>x[0]).join('').trim();
+    if (zh && zh !== clean && !zh.startsWith('{')) {
+      result.meaning = zh; return result;
+    }
+  } catch(e) {}
+
+  // 尝试2: MyMemory (有日限额，超限返回英文原文)
+  try {
+    const resp = await fetch(
+      `https://api.mymemory.translated.net/get?q=${encodeURIComponent(clean)}&langpair=en|zh-CN`
+    );
+    const data = await resp.json();
+    const zh = data.responseData?.translatedText?.trim()||'';
+    const match = data.responseData?.match||0;
+    if (zh && zh !== clean.toUpperCase() && zh !== clean && match > 0) {
+      result.meaning = zh; return result;
+    }
+  } catch(e) {}
+
+  // 尝试3: 本地词典做最终兜底
+  if (LOCAL_DICT[clean]) { result.meaning = LOCAL_DICT[clean]; return result; }
+
+  // 全失败
+  delete DICT_CACHE[clean];
+  return {word: clean, meaning: '未收录（双击句子可翻译整句）'};
+}
+
+function showTooltip(e, data) {
+  if (!data) return;
+  ttWord.textContent = data.word;
+  ttPhonetic.textContent = data.phonetic || '';
+  ttMeaning.textContent = data.meaning;
+  tooltip.classList.add('show');
+  const x = e.clientX + 16;
+  const y = e.clientY - 10;
+  tooltip.style.left = Math.min(x, window.innerWidth - 290) + 'px';
+  tooltip.style.top = Math.min(y, window.innerHeight - 100) + 'px';
+}
+
+function hideTooltip() { tooltip.classList.remove('show'); }
+
+// ====== 单词高亮 ======
+function toggleHighlight(word, el) {
+  const key = word.toLowerCase();
+  if (highlightedWords[key]) {
+    delete highlightedWords[key];
+    el.classList.remove('highlighted');
+  } else {
+    highlightedWords[key] = word;
+    el.classList.add('highlighted');
+  }
+  localStorage.setItem('cet_highlights', JSON.stringify(highlightedWords));
+  updateHighlightPanel();
+}
+
+function updateHighlightPanel() {
+  const list = document.getElementById('hpList');
+  const count = document.getElementById('hpCount');
+  const words = Object.keys(highlightedWords);
+  count.textContent = `(${words.length})`;
+  list.innerHTML = words.map(w =>
+    `<div class="hp-word" onclick="scrollToWord('${w}')">
+      <span>${highlightedWords[w]}</span>
+      <span class="hp-remove" onclick="event.stopPropagation();removeHighlight('${w}')">×</span>
+    </div>`
+  ).join('') || '<div style="color:#aaa;font-size:12px;padding:10px;text-align:center">点击文章中的单词来添加生词</div>';
+}
+
+function removeHighlight(key) { delete highlightedWords[key]; localStorage.setItem('cet_highlights',JSON.stringify(highlightedWords)); updateHighlightPanel(); renderAll(); }
+function clearHighlights() { highlightedWords = {}; localStorage.removeItem('cet_highlights'); updateHighlightPanel(); renderAll(); }
+function toggleHighlightPanel() { highlightPanel.classList.toggle('collapsed'); }
+
+function exportWordList() {
+  const words = Object.entries(highlightedWords).map(([k,v]) => `${v}: ${LOCAL_DICT[k]||'未收录'}`).join('\n');
+  const blob = new Blob([words], {type:'text/plain'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+  a.download = '生词本.txt'; a.click();
+}
+
+// ====== 句子翻译 ======
+async function translateSentence(text) {
+  const clean = text.trim().replace(/\s+/g,' ');
+  if (!clean || clean.length < 5) return;
+  spOriginal.textContent = clean;
+  spTranslated.textContent = '翻译中...';
+  sentencePopup.classList.add('show');
+  lastSelectedText = clean;
+
+  // Google 翻译（主）
+  try {
+    const resp = await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=zh-CN&dt=t&q=${encodeURIComponent(clean)}`);
+    const data = await resp.json();
+    const result = data[0]?.map(x => x[0]).join('') || '';
+    if (result && result !== clean) {
+      spTranslated.textContent = result; return;
+    }
+  } catch(e) {}
+  // 备用 MyMemory
+  try {
+    const resp = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(clean)}&langpair=en|zh-CN`);
+    const data = await resp.json();
+    spTranslated.textContent = data.responseData?.translatedText || '翻译失败，请稍后重试';
+  } catch(e) {
+    spTranslated.textContent = '网络错误，请检查连接';
+  }
+}
+
+function closeSentencePopup() { sentencePopup.classList.remove('show'); }
+function speakSentence() {
+  if (!lastSelectedText) return;
+  const u = new SpeechSynthesisUtterance(lastSelectedText);
+  u.lang = 'en-US'; u.rate = 0.9;
+  speechSynthesis.speak(u);
+}
+function copySentence() {
+  navigator.clipboard.writeText(spTranslated.textContent).then(()=>{
+    const btn = document.querySelector('.sp-btn:last-child');
+    btn.textContent='已复制!'; setTimeout(()=>btn.textContent='复制译文',1500);
+  });
+}
+
+// 选中文字右键/双击翻译句子
+document.addEventListener('dblclick', (e) => {
+  const sel = window.getSelection().toString().trim();
+  if (sel && sel.split(' ').length >= 2) {
+    translateSentence(sel);
+  }
+});
+
+document.addEventListener('mouseup', (e) => {
+  setTimeout(() => {
+    const sel = window.getSelection().toString().trim();
+    if (sel && sel.split(' ').length >= 2 && sel !== lastSelectedText) {
+      // 显示翻译提示
+    }
+  }, 100);
+});
+
+// ======================== 渲染层 ========================
+function renderPassageWithClickableWords(text) {
+  if (!text) return '';
+  // 匹配所有英文单词（含缩写don't, state-of-the-art等）
+  return text.split(/([a-zA-Z]+(?:[-'][a-zA-Z]+)*)/).map(part => {
+    if (/^[a-zA-Z]/.test(part) && part.length >= 2) {
+      return `<span class="word" data-word="${part}">${part}</span>`;
+    }
+    return part.replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }).join('');
+}
+
+function renderSection(sectionKey) {
+  const data = EXAM_DATA[state.examType][state.year];
+  if (!data) return '<div class="card"><p>暂无该年份真题数据</p></div>';
+
+  const section = data[sectionKey];
+  if (!section) return '<div class="card"><p>暂无该部分数据</p></div>';
+
+  let html = '';
+
+  // 写作
+  if (sectionKey === 'writing') {
+    html += `<div class="card">
+      <h2>${section.title}</h2>
+      <p class="passage-title" style="color:#e67e22;font-weight:600">${section.directions}</p>
+      <p style="font-weight:700;margin:16px 0 8px;color:#1a73e8">参考范文：</p>
+      <div class="passage">${section.sample.split('\n\n').map(p => `<p>${renderPassageWithClickableWords(p)}</p>`).join('')}</div>
+    </div>`;
+  }
+
+  // 听力
+  else if (sectionKey === 'listening') {
+    html += `<div class="card"><h2>${section.title}</h2>`;
+    section.sections.forEach(sec => {
+      html += `<h3 style="color:#555;margin:16px 0 10px;font-size:16px">${sec.type}</h3>`;
+      sec.questions.forEach((q, qi) => {
+        html += `<div class="question">
+          <p class="q-text"><span class="q-num">${qi+1}.</span>${renderPassageWithClickableWords(q.q)}</p>
+          <div class="options">${q.opts.map((o, oi) => {
+            let cls = 'option';
+            if (state.showAnswers && oi === q.ans) cls += ' correct';
+            return `<div class="${cls}">${renderPassageWithClickableWords(o)}</div>`;
+          }).join('')}</div>
+        </div>`;
+      });
+    });
+    html += `<button class="btn-toggle-answer" onclick="toggleAnswers()">${state.showAnswers ? '隐藏答案' : '显示答案'}</button></div>`;
+  }
+
+  // 仔细阅读
+  else if (sectionKey === 'reading3') {
+    html += `<div class="card">
+      <h2>${section.title}</h2>
+      <p class="passage-title">${section.passageTitle}</p>
+      <div class="passage">${section.passage.split('\n\n').map(p => `<p>${renderPassageWithClickableWords(p)}</p>`).join('')}</div>
+      <div class="questions"><h3 style="margin-bottom:12px">Questions:</h3>`;
+    section.questions.forEach((q, qi) => {
+      html += `<div class="question">
+        <p class="q-text"><span class="q-num">${qi+1}.</span>${q.q}</p>
+        <div class="options">${q.opts.map((o, oi) => {
+          let cls = 'option';
+          if (state.showAnswers && oi === q.ans) cls += ' correct';
+          return `<div class="${cls}">${o}</div>`;
+        }).join('')}</div>
+      </div>`;
+    });
+    html += `</div>`;
+    html += `<button class="btn-toggle-answer" onclick="toggleAnswers()">${state.showAnswers ? '隐藏答案' : '显示答案'}</button>`;
+    if (state.showAnswers) {
+      html += `<div class="answer-box show"><span class="ans-label">参考答案：</span><br>`;
+      section.questions.forEach((q, qi) => {
+        html += `第${qi+1}题: ${String.fromCharCode(65+q.ans)}<br>`;
+      });
+      html += `</div>`;
+    }
+    html += `</div>`;
+  }
+
+  // 长篇阅读（匹配）
+  else if (sectionKey === 'reading2') {
+    html += `<div class="card">
+      <h2>${section.title}</h2>
+      <p class="passage-title">${section.passageTitle}</p>
+      <div class="passage" style="font-size:14px">${section.passage.split('\n\n').map(p => `<p>${renderPassageWithClickableWords(p)}</p>`).join('')}</div>
+      <div class="questions"><h3 style="margin:20px 0 12px">Statements:</h3>`;
+    section.statements.forEach((s, si) => {
+      html += `<div class="question">
+        <p class="q-text"><span class="q-num">${si+1}.</span>${s}</p>
+        ${state.showAnswers ? `<p style="color:#2e7d32;font-weight:600;margin-top:6px">→ Paragraph ${section.answers[si]}</p>` : ''}
+      </div>`;
+    });
+    html += `</div>`;
+    html += `<button class="btn-toggle-answer" onclick="toggleAnswers()">${state.showAnswers ? '隐藏答案' : '显示答案'}</button></div>`;
+  }
+
+  // 翻译
+  else if (sectionKey === 'translation') {
+    html += `<div class="card">
+      <h2>${section.title}</h2>
+      <p style="color:#e67e22;font-weight:600;margin-bottom:20px">${section.directions}</p>
+      <div style="background:#fafbfc;padding:20px;border-radius:8px;margin-bottom:20px">
+        <p style="font-weight:700;color:#1a73e8;margin-bottom:8px">中文原文：</p>
+        <p style="font-size:16px;line-height:2">${section.chinese}</p>
+      </div>`;
+    if (state.showAnswers) {
+      html += `<div style="background:#e8f5e9;padding:20px;border-radius:8px">
+        <p style="font-weight:700;color:#2e7d32;margin-bottom:8px">参考译文：</p>
+        <p style="font-size:15px;line-height:2">${renderPassageWithClickableWords(section.english)}</p>
+      </div>`;
+    }
+    html += `<button class="btn-toggle-answer" style="margin-top:12px" onclick="toggleAnswers()">${state.showAnswers ? '隐藏译文' : '显示参考译文'}</button></div>`;
+  }
+
+  else {
+    html += `<div class="card"><h2>${section.title||sectionKey}</h2><p>内容加载中...</p></div>`;
+  }
+
+  return html;
+}
+
+function renderAll() {
+  document.getElementById('mainContent').innerHTML = renderSection(state.section);
+
+  // 绑定单词事件
+  document.querySelectorAll('.word').forEach(el => {
+    const word = el.dataset.word;
+    if (!word) return;
+
+    // 恢复高亮
+    if (highlightedWords[word.toLowerCase()]) {
+      el.classList.add('highlighted');
+    }
+
+    // 悬停不再翻译，仅显示可点击样式
+    el.addEventListener('mouseenter', () => {
+      el.classList.add('highlight');
+    });
+    el.addEventListener('mouseleave', () => {
+      el.classList.remove('highlight');
+      hideTooltip();
+    });
+
+    // 点击翻译+高亮
+    el.addEventListener('click', async (e) => {
+      e.stopPropagation();
+      const data = await translateWord(word);
+      showTooltip(e, data);
+      toggleHighlight(word, el);
+    });
+  });
+
+  // 恢复高亮面板
+  updateHighlightPanel();
+}
+
+function toggleAnswers() {
+  state.showAnswers = !state.showAnswers;
+  renderAll();
+}
+
+// ======================== 事件绑定 ========================
+document.querySelectorAll('#examTypeFilter .filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#examTypeFilter .filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    state.examType = btn.dataset.type;
+    state.showAnswers = false;
+    renderAll();
+  });
+});
+
+document.querySelectorAll('#yearFilter .filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#yearFilter .filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    state.year = btn.dataset.year;
+    state.showAnswers = false;
+    renderAll();
+  });
+});
+
+document.querySelectorAll('#sidebarNav .section-link').forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    document.querySelectorAll('#sidebarNav .section-link').forEach(l => l.classList.remove('active'));
+    link.classList.add('active');
+    state.section = link.dataset.section;
+    state.showAnswers = false;
+    renderAll();
+  });
+});
+
+// 点击空白处关闭tooltip
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.word')) hideTooltip();
+});
+
+// ESC关闭句子翻译弹窗
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closeSentencePopup();
+    hideTooltip();
+  }
+});
+
+// 初始渲染
+renderAll();
+</script>
+</body>
+</html>
